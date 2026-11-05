@@ -1,0 +1,7 @@
+node_modules/
+dist/
+worker/index.js
+.DS_Store
+.env
+.env.*
+*.inspect.ndjson

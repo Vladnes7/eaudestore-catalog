@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {parseCSV,cleanRows,normalize,describe,diffRows} from './catalog-core.mjs';
+assert.deepEqual(parseCSV('a,b\r\n"name, x","a""b"\r\n'),[['a','b'],['name, x','a"b']]);
+assert.throws(()=>parseCSV('"open'));
+assert.deepEqual(cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА'],['X','1 200 ₽'],['',''],['X','1200'],['X','1500']]),{rows:[['X',1200],['X',1500]],empty:1,duplicates:1});
+assert.throws(()=>cleanRows([['wrong','schema'],['x','100']]));
+assert.throws(()=>cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА'],['X','']]));
+assert.throws(()=>cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА']]));
+assert.equal(normalize('Насоматто'),normalize('Nasomatto'));
+assert.ok(normalize('État libre d’Orange').includes('etat libre d orange'));
+assert.deepEqual(describe(['X edp 50ml TESTER',1200],0),{name:'X edp 50ml TESTER',price:1200,index:0,key:'X edp 50ml TESTER',search:'x edp 50ml tester',volume:50,conc:'EDP',tester:true});
+assert.equal(diffRows([['X',100],['X',200]],[['X',200],['X',100]]).changed.length,0);
+assert.equal(diffRows([['X',100]],[['X',120]]).changed.length,1);
+const saved=JSON.parse(await fs.readFile(new URL('catalog.json',import.meta.url)));
+assert.equal(saved.rows.length,45657);assert.ok(saved.rows.every(r=>typeof r[0]==='string'&&r[1]>0));
+assert.equal(new Set(saved.rows.map(JSON.stringify)).size,saved.rows.length);
+console.log('PASS: CSV quoting, currency parsing, empty and invalid data, exact duplicates, conflicting variants, transliteration, volume/tester parsing, price comparison, 45,657 source rows.');

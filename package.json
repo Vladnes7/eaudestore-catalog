@@ -1,0 +1,11 @@
+{
+  "name": "eaudestore-catalog",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs && bash scripts/build.sh && node scripts/validate-artifact.mjs",
+    "test": "node test.mjs",
+    "start": "node scripts/serve.mjs",
+    "validate": "node scripts/validate-artifact.mjs"
+  }
+}
