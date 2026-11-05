@@ -96,8 +96,10 @@ async function refresh(){
  if(busy)return;busy=true;$('#refresh').disabled=true;$('#refresh').textContent='Проверяем источник…';
  if(location.protocol==='file:'){busy=false;$('#refresh').disabled=false;$('#refresh').textContent='↻ Обновить цены';$('#notice').textContent='Это автономная копия. Для обновления откройте онлайн-каталог или Google-таблицу из раздела «Обновления».';return;}
  try{
-  const response=await fetch('/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(25000)});if(!response.ok)throw Error('Источник временно недоступен');
-  const data=await response.json();if(!Array.isArray(data.rows)||!data.rows.length||data.rows.some(r=>!Array.isArray(r)||typeof r[0]!=='string'||!Number.isFinite(r[1])||r[1]<=0))throw Error('Источник вернул некорректные данные');
+  const direct=document.documentElement.dataset.catalogMode==='direct';
+  const endpoint=direct?'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv':'/api/catalog';
+  const response=await fetch(endpoint,{credentials:direct?'omit':'same-origin',cache:'no-store',signal:AbortSignal.timeout(25000)});if(!response.ok)throw Error('Источник временно недоступен');
+  const data=direct?{...cleanRows(parseCSV(await response.text())),checkedAt:new Date().toISOString(),source:SOURCE}:await response.json();if(!Array.isArray(data.rows)||!data.rows.length||data.rows.some(r=>!Array.isArray(r)||typeof r[0]!=='string'||!Number.isFinite(r[1])||r[1]<=0))throw Error('Источник вернул некорректные данные');
   const changes=diffRows(sourceRows,data.rows);sourceRows=data.rows;prepare(sourceRows);apply();hasRemote=true;
   const date=new Date(data.checkedAt).toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
   $('#lastChecked').textContent='Проверено по источнику · '+date;$('#notice').textContent='';

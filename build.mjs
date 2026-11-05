@@ -39,4 +39,7 @@ await fs.mkdir(new URL('worker/',root),{recursive:true});
 await fs.mkdir(new URL('downloads/',root),{recursive:true});
 await fs.writeFile(new URL('worker/index.js',root),server);
 await fs.writeFile(new URL('downloads/Eaudestore-каталог.html',root),html);
+await fs.mkdir(new URL('docs/',root),{recursive:true});
+await fs.writeFile(new URL('docs/index.html',root),html.replace('<html lang="ru">','<html lang="ru" data-catalog-mode="direct">'));
+await fs.writeFile(new URL('docs/.nojekyll',root),'');
 console.log(JSON.stringify({positions:snapshot.rows.length,htmlBytes:Buffer.byteLength(html),workerBytes:Buffer.byteLength(server)}));
