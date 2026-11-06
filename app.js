@@ -4,13 +4,14 @@ const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n
 const number=n=>new Intl.NumberFormat('ru-RU').format(n);
 const positions=n=>number(n)+' '+(n%10===1&&n%100!==11?'позиция':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?'позиции':'позиций');
 let sourceRows=SNAPSHOT.rows,products=[],filtered=[],page=0,view='catalog',busy=false,hasRemote=false;
+let requestedView='catalog';
 let refreshTimer;
 function refreshState(state){
  clearTimeout(refreshTimer);const button=$('#refresh');
  button.disabled=state==='loading';button.setAttribute('aria-busy',String(state==='loading'));
  ['loading','success','error'].forEach(s=>button.classList.toggle('is-'+s,state===s));
  const labels={idle:'Обновить цены',loading:'Проверяем цены…',success:'Цены актуальны',error:'Повторить'};
- button.innerHTML='<svg aria-hidden="true"><use href="#i-'+(state==='success'?'check':'refresh')+'"/></svg><span>'+labels[state]+'</span>';
+ buttonContent(button,labels[state]);
  if(state==='success')refreshTimer=setTimeout(()=>refreshState('idle'),2400);
 }
 let favorites=new Set();try{favorites=new Set(JSON.parse(localStorage.getItem('eaude-favorites')||'[]'));}catch{}
@@ -38,7 +39,8 @@ function render(){
  $('#rows').innerHTML=filtered.slice(page*SIZE,(page+1)*SIZE).map(p=>'<tr><td class="namecell"><div class="name">'+escapeHTML(p.name)+'</div><div class="tags">'+(p.tester?'<span class="badge badge-tester">Тестер</span>':'')+(p.conc?'<span class="badge">'+p.conc+'</span>':'')+(p.volume!==null?'<span class="badge">'+p.volume+' мл</span>':'')+'</div></td><td class="vol">'+(p.volume!==null?p.volume+' мл':'—')+'</td><td class="price">'+money(p.price)+'</td><td class="favcell"><button class="fav '+(favorites.has(p.key)?'selected':'')+'" data-index="'+p.index+'" aria-label="'+(favorites.has(p.key)?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+favorites.has(p.key)+'"><svg aria-hidden="true"><use href="#i-heart"/></svg></button></td></tr>').join('');
  $('#range').textContent=filtered.length?number(page*SIZE+1)+'–'+number(Math.min((page+1)*SIZE,filtered.length))+' из '+number(filtered.length):'0 позиций';$('#prev').disabled=page===0;$('#next').disabled=(page+1)*SIZE>=filtered.length;
 }
-function setView(next){view=next;$$('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('#catalogView').hidden=!['catalog','favorites'].includes(view);$('#updatesView').hidden=view!=='updates';$('#promotionsView').hidden=view!=='promotions';$('#heading').textContent=view==='favorites'?'Ваше избранное':'Каталог парфюмерии';apply();}
+function commitView(next){view=next;$$('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('#catalogView').hidden=!['catalog','favorites'].includes(view);$('#updatesView').hidden=view!=='updates';$('#promotionsView').hidden=view!=='promotions';$('#heading').textContent=view==='favorites'?'Ваше избранное':'Каталог парфюмерии';apply();}
+function setView(next){if(next===requestedView)return;requestedView=next;const current=$('main > section:not([hidden])');transitionView(current,()=>commitView(next));}
 async function db(mode,value){return new Promise((resolve,reject)=>{if(!window.indexedDB){resolve(null);return;}const r=indexedDB.open('eaude-catalog',1);r.onupgradeneeded=()=>r.result.createObjectStore('snapshots');r.onerror=()=>reject(r.error);r.onsuccess=()=>{const d=r.result,tx=d.transaction('snapshots',mode==='put'?'readwrite':'readonly'),s=tx.objectStore('snapshots'),q=mode==='put'?s.put(value,'latest'):s.get('latest');q.onsuccess=()=>{const v=q.result;tx.oncomplete=()=>{d.close();resolve(v);};};q.onerror=()=>{d.close();reject(q.error);};};});}
 async function refresh(){
  if(busy)return;busy=true;refreshState('loading');let finalState='idle';
@@ -68,6 +70,7 @@ $('#export').onclick=()=>{const cell=v=>'"'+String(v).replace(/"/g,'""')+'"';con
 const promos=[['Io Non Ho Mani',22850],['Ne il Giorno',20930],['Quando Rapita In Estasi',19190],['Oceano Viola',18780],...['Symphonie Passion','Reliqvia','Lavs','Scusami','Opus 1144','Ennui Noir','Chiudi Gli Occi E Poi Vedi','But Not Today','Lascia Chio Pianga','Rosa Nigra'].map(n=>[n,17900])];
 $('#promos').innerHTML=promos.map(([n,p])=>'<article class="promo"><span>FILIPPO SORCINELLI</span><strong>'+escapeHTML(n)+'</strong><b>'+money(p)+'</b></article>').join('');
 $('#promoSource').href='https://t.me/eaudestore/1378';
-$('#promoSource').textContent='Открыть пост со скидками ↗';
+$('#promoSource').textContent='Открыть пост со скидками';
+enhanceActions();
 prepare(sourceRows);apply();
 (async()=>{try{const cached=await db('get');if(cached?.rows?.length&&!hasRemote){sourceRows=cached.rows;prepare(sourceRows);apply();$('#lastChecked').textContent='Сохранённая копия · '+new Date(cached.checkedAt).toLocaleString('ru-RU');}}catch{}await refresh();})();

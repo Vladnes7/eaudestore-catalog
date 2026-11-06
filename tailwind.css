@@ -1,0 +1,10 @@
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "./components/**/*.tsx";
+@theme inline {
+  --color-background: var(--bg);
+  --color-primary: var(--action);
+  --color-primary-foreground: var(--action-ink);
+  --color-border: var(--line);
+}

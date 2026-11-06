@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="ru" data-type="software" data-radius="soft" data-buttons="solid" data-motion>
+<html lang="ru" class="dark" data-type="software" data-radius="soft" data-buttons="solid" data-motion>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071039">
+  <meta name="theme-color" content="#0b0b0c">
   <meta name="page-type" content="software"><meta name="site-kind" content="software">
   <title>Eaudestore — каталог парфюмерии</title>
   <meta name="description" content="Каталог Eaudestore: поиск ароматов, сравнение цен и объёмов, избранное и актуальный прайс продавца.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23071039'/%3E%3Ctext x='12' y='34' font-family='Arial' font-size='34' fill='%23E6EDFD'%3Ee%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230B0B0C'/%3E%3Ctext x='12' y='34' font-family='Arial' font-size='34' fill='%23C6F432'%3Ee%3C/text%3E%3C/svg%3E">
   <style>/*__STYLES__*/</style>
 </head>
 <body>
-<!-- Existing application; user blue palette; Manrope; soft controls; skill hover/press layer. -->
+<!-- Existing catalog; midnight/lime palette; Manrope; shared hover buttons. -->
 <a class="skip-link" href="#search">Перейти к поиску</a>
 <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
@@ -27,10 +27,12 @@
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M8 5h11v11M19 5 5 19"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
 </defs></svg>
 <div class="shell">
   <aside class="sidebar">
-    <a class="brand" href="./" aria-label="Eaudestore — главная">eau<span>de</span>store<span class="brand-dot">.</span></a>
+    <div class="brand-row"><a class="brand" href="./" aria-label="Eaudestore — главная">eau<span>de</span>store<span class="brand-dot">.</span></a><button id="motionToggle" class="motion-toggle" aria-label="Отключить анимацию" title="Отключить анимацию" aria-pressed="true"><svg aria-hidden="true"><use href="#i-pause"/></svg></button></div>
     <p class="brand-caption">Ваша коллекция ароматов</p><p class="nav-label">Библиотека</p>
     <nav class="nav" aria-label="Разделы">
       <button data-view="catalog" class="active" aria-current="page"><svg><use href="#i-grid"/></svg><span>Каталог</span></button>
@@ -38,7 +40,7 @@
       <button data-view="promotions"><svg><use href="#i-tag"/></svg><span>Скидки<span class="desktop-word"> из канала</span></span></button>
       <button data-view="updates"><svg><use href="#i-refresh"/></svg><span>Обновления</span></button>
     </nav>
-    <div class="sidefoot"><div class="source-caption"><span class="source-dot"></span>Прайс Eaudestore</div><p>Цены из таблицы продавца.<br>Наличие уточняйте при заказе.</p><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Открыть канал<svg><use href="#i-external"/></svg></a><a class="m-link" href="https://t.me/hhellbound" target="_blank" rel="noopener">Написать продавцу<svg><use href="#i-external"/></svg></a></div>
+    <div class="sidefoot"><div class="source-caption"><span class="source-dot"></span>Прайс Eaudestore</div><p>Цены из таблицы продавца.<br>Наличие уточняйте при заказе.</p><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Открыть канал</a><a class="m-link" href="https://t.me/hhellbound" target="_blank" rel="noopener">Написать продавцу</a></div>
   </aside>
   <main class="main">
     <header class="topline"><div class="sync-status"><span class="status-dot" aria-hidden="true"></span><span id="lastChecked">Сохранённый прайс · 5 ноября 2026</span></div><button id="refresh" class="btn btn--primary refresh-button"><svg aria-hidden="true"><use href="#i-refresh"/></svg><span>Обновить цены</span></button></header>
@@ -61,12 +63,12 @@
     </section>
     <section id="updatesView" hidden>
       <div class="view-heading"><p class="section-kicker">Eaudestore / источник данных</p><h1>Обновления прайса</h1><p class="lede">Цены проверяются при открытии каталога<br class="desktop-break"> и по кнопке «Обновить цены».</p></div>
-      <div class="panel"><div class="panel-heading"><span class="panel-icon"><svg><use href="#i-grid"/></svg></span><h2>Основной источник</h2></div><p>Google-таблица из закреплённого поста. В канале файл обозначен как прайс за сентябрь 2026 года. Дата проверки показывает, когда данные были получены, а не дату изменения каждой цены.</p><div class="actions"><a class="sourceLink m-link" target="_blank" rel="noopener">Открыть Google-таблицу ↗</a><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Пост с прайсом ↗</a></div><div class="meta-grid"><div><b id="totalCount">—</b><span>позиций в каталоге</span></div><div><b>19 875</b><span>пустых строк убрано</span></div><div><b>Без макросов</b><span>поиск в браузере</span></div></div></div>
+      <div class="panel"><div class="panel-heading"><span class="panel-icon"><svg><use href="#i-grid"/></svg></span><h2>Основной источник</h2></div><p>Google-таблица из закреплённого поста. В канале файл обозначен как прайс за сентябрь 2026 года. Дата проверки показывает, когда данные были получены, а не дату изменения каждой цены.</p><div class="actions"><a class="sourceLink m-link" target="_blank" rel="noopener">Открыть Google-таблицу</a><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Пост с прайсом</a></div><div class="meta-grid"><div><b id="totalCount">—</b><span>позиций в каталоге</span></div><div><b>19 875</b><span>пустых строк убрано</span></div><div><b>Без макросов</b><span>поиск в браузере</span></div></div></div>
       <div class="panel"><div class="panel-heading"><span class="panel-icon"><svg><use href="#i-refresh"/></svg></span><h2>Последняя проверка</h2></div><p id="updateSummary" role="status">Загружен сохранённый снимок от 5 ноября 2026 года.</p><ul id="changeList" class="history"></ul><button id="export" class="btn btn--secondary">Скачать текущий прайс CSV<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
-      <div class="panel"><h2>Другие цены в канале</h2><p>Скидки и прайс отливантов выходят отдельно. Если в посте не указан объём или тип упаковки, скидка не заменяет цену произвольного флакона. Автоматическое обновление относится к основной Google-таблице.</p><a class="m-link" href="https://t.me/eaudestore/1200" target="_blank" rel="noopener">Прайс отливантов в канале ↗</a></div>
+      <div class="panel"><h2>Другие цены в канале</h2><p>Скидки и прайс отливантов выходят отдельно. Если в посте не указан объём или тип упаковки, скидка не заменяет цену произвольного флакона. Автоматическое обновление относится к основной Google-таблице.</p><a class="m-link" href="https://t.me/eaudestore/1200" target="_blank" rel="noopener">Прайс отливантов в канале</a></div>
     </section>
-    <section id="promotionsView" hidden><div class="view-heading"><p class="section-kicker">Eaudestore / специальные предложения</p><h1>Скидки из канала</h1><p class="lede">Filippo Sorcinelli · публикация от 5 ноября 2026 года.</p></div><div class="notice promo-notice">В посте не указаны объём и формат флакона — уточните их перед заказом. Эти предложения сохранены отдельно и не подменяют основной прайс.</div><div id="promos" class="promos"></div><p class="promo-source"><a class="m-link" id="promoSource" href="https://t.me/eaudestore/1378" target="_blank" rel="noopener">Открыть пост со скидками ↗</a></p></section>
-    <footer class="footer"><span>Eaudestore<span class="footer-divider">/</span>Цены в рублях. Наличие уточняется у продавца.</span><a class="sourceLink m-link" target="_blank" rel="noopener">Источник данных ↗</a></footer>
+    <section id="promotionsView" hidden><div class="view-heading"><p class="section-kicker">Eaudestore / специальные предложения</p><h1>Скидки из канала</h1><p class="lede">Filippo Sorcinelli · публикация от 5 ноября 2026 года.</p></div><div class="notice promo-notice">В посте не указаны объём и формат флакона — уточните их перед заказом. Эти предложения сохранены отдельно и не подменяют основной прайс.</div><div id="promos" class="promos"></div><p class="promo-source"><a class="m-link" id="promoSource" href="https://t.me/eaudestore/1378" target="_blank" rel="noopener">Открыть пост со скидками</a></p></section>
+    <footer class="footer"><span>Eaudestore<span class="footer-divider">/</span>Цены в рублях. Наличие уточняется у продавца.</span><a class="sourceLink m-link" target="_blank" rel="noopener">Источник данных</a></footer>
   </main>
 </div>
 <div id="toast" class="toast" role="status" hidden></div>

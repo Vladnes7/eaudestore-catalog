@@ -1,16 +1,25 @@
 import fs from 'node:fs/promises';
+import { build } from 'esbuild';
+import { execFileSync } from 'node:child_process';
 const root=new URL('.',import.meta.url);
 const read=p=>fs.readFile(new URL(p,root),'utf8');
+await fs.mkdir(new URL('.build/',root),{recursive:true});
+await build({entryPoints:[new URL('scripts/render-button.tsx',root).pathname],outfile:new URL('.build/render-button.mjs',root).pathname,bundle:true,platform:'node',format:'esm',packages:'external',tsconfig:new URL('tsconfig.json',root).pathname});
+const {buttonMarkup}=await import(new URL('.build/render-button.mjs',root));
+execFileSync('npx',['--no-install','@tailwindcss/cli','-i','tailwind.css','-o','.build/tailwind.css','--minify'],{cwd:root,stdio:'pipe'});
 const core=await read('catalog-core.mjs');
 const snapshot=JSON.parse(await read('catalog.json'));
 const coreInline=core.replace(/^export /gm,'');
-const application='(()=>{\n'+coreInline+'\n'+(await read('app.js')).replace('/*__SNAPSHOT__*/',()=>JSON.stringify(snapshot).replace(/</g,'\\u003c'))+'\n})();';
+const effects=(await read('ui-effects.js')).replace('/*__BUTTON_MARKUP__*/',()=>JSON.stringify(buttonMarkup).replace(/</g,'\\u003c'));
+const application='(()=>{\n'+coreInline+'\n'+effects+'\n'+(await read('app.js')).replace('/*__SNAPSHOT__*/',()=>JSON.stringify(snapshot).replace(/</g,'\\u003c'))+'\n})();';
 const styles=await read('styles.css');
 const motionCSS=await read('assets/motion/motion.css');
 const motionJS=(await read('assets/motion/motion.js')).replace(/<\/script/gi,'<\\/script');
+const tailwindCSS=await read('.build/tailwind.css');
+const darkCSS=await read('dark.css');
 const html=(await read('page.html'))
   .replace('/*__APPLICATION__*/',()=>application)
-  .replace('/*__STYLES__*/',()=>styles+'\n'+motionCSS)
+  .replace('/*__STYLES__*/',()=>styles+'\n'+motionCSS+'\n'+tailwindCSS+'\n'+darkCSS)
   .replace('/*__MOTION_JS__*/',()=>motionJS);
 const server=`${coreInline}
 let recent=null;
