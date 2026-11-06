@@ -1,21 +1,474 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#24563d"><title>Eaudestore — личный каталог</title><meta name="description" content="Прайс Eaudestore: быстрый поиск по названию, объёму и цене."><style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#18231e;background:#f6f7f4;font-size:15px;line-height:1.5;--line:#dfe5df;--green:#24563d;--muted:#5c6961}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select{ -webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #84ac95;outline-offset:3px}button:disabled{opacity:.6;cursor:wait}button{border:1px solid var(--line);background:white;color:inherit;border-radius:8px;padding:10px 15px}button:hover{border-color:#9baa9f}.primary{background:var(--green);color:#fff;border-color:var(--green)}.quiet{background:transparent}.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:30px 22px;display:flex;flex-direction:column;background:#f6f7f4}.brand{font-size:24px;letter-spacing:-1px;font-weight:650;text-decoration:none}.brand span{color:var(--green)}.eyebrow{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted)}.sidebar .eyebrow{margin:5px 0 38px}.nav{display:grid;gap:8px}.nav button{border-color:transparent;text-align:left;background:transparent}.nav button.active{background:#e6ece5;color:#19452e;font-weight:600}.nav svg{vertical-align:-4px;margin-right:10px}.sidefoot{margin-top:auto;padding-top:25px;font-size:13px;color:var(--muted)}.sidefoot a{display:block;margin-top:10px;text-decoration:none}.sidefoot a:hover{text-decoration:underline}.badge{display:inline-block;font-size:11px;line-height:1.5;padding:3px 7px;border-radius:4px;background:#edf1eb;color:#3b5846;white-space:nowrap}.main{padding:32px 42px 20px;max-width:1600px;width:100%;margin:auto}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:13px;color:var(--muted)}.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6c8c6e;margin-right:7px}h1{font-size:36px;letter-spacing:-1.3px;font-weight:550;line-height:1.2;margin:32px 0 12px}h2{font-size:20px;letter-spacing:-.4px;margin:0 0 14px}p{margin:0 0 16px}.lede{color:var(--muted);max-width:650px}.searchbox{display:flex;align-items:center;gap:12px;margin-top:27px;background:white;border:1px solid #a9baac;border-radius:10px;padding:0 16px;height:60px}.searchbox svg{color:var(--green);flex-shrink:0}.searchbox input{border:0;outline:0;background:transparent;width:100%;height:100%;font-size:17px;min-width:0}.searchbox:focus-within{border-color:var(--green);box-shadow:0 0 0 2px #24563d16}.searchbox button{padding:4px 9px;border:0;color:var(--muted);font-size:20px}.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end;padding:18px 0 22px}.filter{display:grid;gap:5px;font-size:12px;color:var(--muted)}.filter select,.filter input{width:100%;height:39px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:7px 10px;color:#18231e}.filter input{width:111px}.filter select{min-width:142px}.filters .reset{font-size:13px;padding:9px 12px;background:transparent}.resultsbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-top:1px solid var(--line)}.resultsbar strong{font-weight:600}.resultsbar span{font-size:13px;color:var(--muted)}.sort{background:transparent;border:0;color:var(--muted);max-width:200px;font-size:13px}.tablewrap{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}table{border-collapse:collapse;width:100%;table-layout:fixed}th{font-size:11px;text-transform:uppercase;letter-spacing:.8px;text-align:left;background:#edf1eb;color:#59685c;padding:12px 18px;font-weight:600}td{padding:17px 18px;border-top:1px solid #e9ede7;vertical-align:middle}tbody tr:hover{background:#fafcf8}th:nth-child(1){width:58%}th:nth-child(2){width:13%}th:nth-child(3){width:21%;text-align:right}th:nth-child(4){width:8%}.name{font-size:14px;font-weight:500;overflow-wrap:anywhere}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.tags .badge{font-size:10px;background:#f0f2ee;color:#5a665c}.price{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;font-size:16px}.vol{font-size:13px;color:var(--muted)}.fav{border:0;background:transparent;font-size:24px;padding:2px 6px;color:#89968b}.fav.selected{color:var(--green)}.empty{padding:65px 20px;text-align:center;color:var(--muted)}.empty strong{display:block;color:#18231e;font-size:20px;margin-bottom:8px}.pagination{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-size:13px;color:var(--muted);gap:10px}.pagination .buttons{display:flex;gap:8px}.pagination button{padding:7px 13px}.footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:17px 0 5px;color:var(--muted);font-size:12px;gap:12px}.footer a{text-underline-offset:3px}.notice{padding:12px 15px;border:1px solid #ddd9b6;background:#faf7e9;border-radius:8px;font-size:13px;color:#665b2b;margin:16px 0}.notice:empty{display:none}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;margin:22px 0}.panel p{color:var(--muted);max-width:780px}.panel .actions{display:flex;gap:10px;flex-wrap:wrap}.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:25px;padding-top:20px;gap:16px}.meta-grid b{display:block;font-size:23px;font-weight:500}.meta-grid span{font-size:12px;color:var(--muted)}.history{font-size:13px;max-height:400px;overflow:auto}.history li{padding:9px 0;border-bottom:1px solid var(--line)}.promos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.promo{border:1px solid var(--line);border-radius:9px;padding:16px}.promo span{display:block;font-size:12px;color:var(--muted)}.promo strong{display:block;margin:5px 0;font-size:16px;font-weight:500}.promo b{font-variant-numeric:tabular-nums}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#18231e;color:white;border-radius:8px;padding:12px 20px;z-index:5;font-size:13px;max-width:90vw}.hidden,[hidden]{display:none!important}svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}mark{background:#e1edbd;color:inherit}label{cursor:pointer}
-@media(min-width:1450px){.main{padding-left:60px;padding-right:60px}}@media(max-width:1000px){.shell{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:25px 15px}.main{padding:26px 24px}.filter select{min-width:125px}.filter input{width:100px}th:nth-child(1){width:57%}th:nth-child(3){width:22%}th:nth-child(4){width:8%}th,td{padding:15px 12px}}@media(max-width:720px){.shell{display:block}.sidebar{height:auto;position:static;padding:17px 18px 0;border-right:0;border-bottom:1px solid var(--line)}.sidebar .eyebrow{margin:3px 0 16px}.brand{font-size:23px}.nav{display:flex;overflow:auto;gap:5px;margin:0 -3px}.nav button{white-space:nowrap;font-size:13px;border-radius:8px 8px 0 0;padding:11px 12px}.nav svg{display:none}.sidefoot{display:none}.main{padding:22px 18px}.topline{font-size:11px;align-items:flex-start}.topline button{font-size:12px;padding:8px 10px}h1{font-size:30px;margin-top:24px}.lede{font-size:13px}.searchbox{height:55px;margin-top:22px;padding:0 12px}.searchbox input{font-size:16px}.filters{gap:8px}.filter{flex:1;min-width:calc(50% - 8px)}.filter input,.filter select{width:100%;min-width:0;font-size:14px;height:42px}.filters .reset{margin-left:auto}.resultsbar{align-items:flex-start;font-size:13px}.resultsbar span{font-size:11px}.sort{max-width:155px;font-size:12px}.tablewrap{border-radius:9px}thead{display:none}tbody tr{display:grid;grid-template-columns:1fr 50px;position:relative;padding:16px;border-top:1px solid var(--line)}tbody tr:first-child{border:0}td{border:0;padding:0}.namecell{grid-column:1}.name{font-size:14px;padding-right:5px}.vol{display:none}.price{grid-column:1;text-align:left;font-size:18px;margin-top:11px}.favcell{grid-column:2;grid-row:1/3;align-self:start;text-align:right}.fav{font-size:27px}.tags .badge{font-size:10px}.pagination{font-size:11px}.pagination button{padding:8px 10px}.footer{display:block;font-size:11px}.footer a{display:block;margin-top:8px}.panel{padding:20px}.meta-grid{gap:10px}.meta-grid b{font-size:19px}.promos{grid-template-columns:1fr}.topline #lastChecked{max-width:190px}.toast{width:max-content;text-align:center}}@media(prefers-reduced-motion:no-preference){button{transition:background .15s,border-color .15s}}
+<!doctype html>
+<html lang="ru" data-type="software" data-radius="soft" data-buttons="solid" data-motion>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071039">
+  <meta name="page-type" content="software"><meta name="site-kind" content="software">
+  <title>Eaudestore — каталог парфюмерии</title>
+  <meta name="description" content="Каталог Eaudestore: поиск ароматов, сравнение цен и объёмов, избранное и актуальный прайс продавца.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23071039'/%3E%3Ctext x='12' y='34' font-family='Arial' font-size='34' fill='%23E6EDFD'%3Ee%3C/text%3E%3C/svg%3E">
+  <style>/* User palette, Manrope, soft controls. Motion is the unchanged skill layer. */
+:root {
+  --p-bg:#f5f8ff; --p-surface:#ffffff; --p-ink:#071039; --p-muted:#526489;
+  --p-accent:#2e5de6; --p-accent-ink:#f5f8ff; --p-action:#2e5de6; --p-action-ink:#f5f8ff;
+  --p-inv-bg:#071039; --p-inv-surface:#131f46; --p-inv-ink:#f5f8ff; --p-inv-muted:#8f99b0;
+  --p-inv-accent:#f5f8ff; --p-inv-accent-ink:#071039; --p-inv-action:#f5f8ff; --p-inv-action-ink:#071039;
+  --font-display:"Manrope",system-ui,sans-serif; --font-text:"Manrope",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --display-weight:500; --display-tracking:-.035em; --display-tracking-xl:-.045em; --ly-scale:.97;
+  --bg:var(--p-bg); --ink:var(--p-ink); --action:var(--p-action); --action-ink:var(--p-action-ink); --muted:var(--p-muted);
+  --blue-deep:#0f2270; --blue-strong:#1a3bb0; --blue-mid:#6e92f2; --blue-line:#afc5f8; --blue-wash:#e6edfd;
+  --line:#dce5f8; --line-strong:#bacbf0; --control-line:#7890c3; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-btn:10px;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px;
+  font-family:var(--font-text); font-synthesis:none; color:var(--ink); background:var(--bg); font-size:16px; line-height:1.55; color-scheme:light;
+}
+*{box-sizing:border-box}body{margin:0;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}button,select{cursor:pointer}button{color:inherit}
+button:disabled{cursor:default;opacity:.45}a{color:var(--blue-strong);text-underline-offset:4px}
+svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.svg-library{position:absolute;width:0;height:0;overflow:hidden}[hidden],.hidden{display:none!important}
+.sr-only,.skip-link:not(:focus){position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip-link:focus{position:fixed;top:12px;left:12px;z-index:100;padding:12px 20px;background:white;border:2px solid var(--action);border-radius:var(--r-btn)}
+:is(button,a):focus-visible{outline:2px solid var(--action);outline-offset:4px}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
 
-.searchbox input::-webkit-search-cancel-button{display:none}
-/* User palette: Capri blue, Sand #D8D3B3, Terra #984A39, Mist #B1B7BE. */
-:root{color:#263e4b;background:#f3f1e8;--line:#d5d5c8;--green:#365d73;--muted:#65717a}
-.sidebar{background:#d8d3b3}.brand span{color:#365d73}.nav button.active{background:#365d73;color:#fff}.sidebar .eyebrow,.sidefoot{color:#455d67}.main{color:#263e4b}.searchbox{border-color:#9cabb1;background:#fffef9}.searchbox svg{color:#365d73}.searchbox:focus-within{border-color:#365d73;box-shadow:0 0 0 2px #365d7315}.filter select,.filter input{background:#fffef9}.filter select,.filter input,button{color:#263e4b}.tablewrap,.panel,.promo{background:#fffef9}.tablewrap{border-color:#c7cbbf}th{background:#365d73;color:#fff}td{border-color:#e6e5d9}tbody tr:hover{background:#f1f2ed}.tags .badge{background:#e6eaeb;color:#465e6b}.price{color:#365d73}.fav.selected{color:#984a39}#refresh{background:#984a39;border-color:#984a39;color:#fff}.status-dot{background:#365d73}.notice{background:#ece9d9;border-color:#d8d3b3;color:#5c5541}.primary{background:#365d73;color:white;border-color:#365d73}.toast{background:#365d73}.topline button:hover{background:#823e30}button:hover{border-color:#8a9ca4}.empty strong{color:#263e4b}.sourceLink{color:#365d73}.promo{border-top:3px solid #b1b7be}.promo b{color:#984a39}.promo span{color:#65717a}.promos{margin-top:24px}
-@media(max-width:720px){.sidebar{background:#d8d3b3}.nav button.active{background:#365d73;color:white}}
-</style></head><body>
-<div class="shell"><aside class="sidebar"><a class="brand" href="#">eau<span>de</span>store.</a><div class="eyebrow">Личный каталог</div><nav class="nav" aria-label="Разделы"><button data-view="catalog" class="active"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 10v10"/></svg>Все позиции</button><button data-view="favorites"><svg viewBox="0 0 24 24"><path d="m12 3 3 6 6 1-4.5 4.5 1 6.5-5.5-3-5.5 3 1-6.5L3 10l6-1z"/></svg>Избранное <span id="favCount">0</span></button><button data-view="promotions">Скидки из канала</button><button data-view="updates"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 3M18 18A8 8 0 0 1 5 15"/></svg>Обновления</button></nav><div class="sidefoot">Цены из прайса продавца.<br>Наличие уточняйте при заказе.<a href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Канал Eaudestore ↗</a><a href="https://t.me/hhellbound" target="_blank" rel="noopener">Написать продавцу ↗</a></div></aside>
-<main class="main"><div class="topline"><span id="lastChecked"><i class="status-dot"></i>Сохранённый прайс · 5 ноября 2026</span><button id="refresh">↻ Обновить цены</button></div><div id="notice" class="notice" role="status"></div>
-<section id="catalogView"><h1 id="heading">Найдите свой аромат</h1><p class="lede">Весь прайс в одном месте. Ищите по названию, сравнивайте объёмы и сохраняйте понравившееся.</p><label class="searchbox"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="search" type="search" autocomplete="off" placeholder="Например, Nasomatto Black Afgano" aria-label="Поиск по названию"><button id="clearSearch" type="button" aria-label="Очистить поиск" hidden>×</button></label>
-<div class="filters"><label class="filter">Формат<select id="format"><option value="">Все форматы</option><option value="regular">Без тестеров</option><option value="tester">Тестеры</option></select></label><label class="filter">Концентрация<select id="concentration"><option value="">Любая</option><option>EDP</option><option>EDT</option><option>EDC</option><option>EXTRAIT</option><option>PARFUM</option></select></label><label class="filter">Объём<select id="volume"><option value="">Любой объём</option><option value="small">До 30 мл</option><option value="medium">31–75 мл</option><option value="large">76–125 мл</option><option value="xl">Больше 125 мл</option></select></label><label class="filter">Цена от, ₽<input id="minPrice" type="number" min="0" placeholder="0" inputmode="numeric"></label><label class="filter">До, ₽<input id="maxPrice" type="number" min="0" placeholder="Без лимита" inputmode="numeric"></label><button id="reset" class="reset">Сбросить</button></div>
-<div class="resultsbar"><div><strong id="resultCount"></strong><br><span id="resultHint">Сохранены все товары из прайса, включая косметику и аксессуары</span></div><select class="sort" id="sort" aria-label="Сортировка"><option value="source">Как в прайсе</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select></div><div class="tablewrap"><table aria-label="Каталог товаров"><thead><tr><th>Наименование</th><th>Объём</th><th>Цена</th><th><span aria-label="Избранное">☆</span></th></tr></thead><tbody id="rows"></tbody></table><div id="empty" class="empty" hidden><strong>Ничего не нашлось</strong><span>Попробуйте часть названия или сбросьте фильтры.</span></div></div><div class="pagination"><span id="range"></span><div class="buttons"><button id="prev" aria-label="Предыдущая страница">← Назад</button><button id="next" aria-label="Следующая страница">Далее →</button></div></div></section>
-<section id="updatesView" hidden><h1>Обновления прайса</h1><p class="lede">Каталог проверяет Google-таблицу продавца при открытии. Кнопка «Обновить цены» запускает новую проверку.</p><div class="panel"><h2>Основной источник</h2><p>Google-таблица из закреплённого поста. В канале файл обозначен как прайс за сентябрь 2026 года. Дата проверки показывает, когда данные были получены, а не дату изменения каждой цены.</p><div class="actions"><a class="sourceLink" target="_blank" rel="noopener">Открыть Google-таблицу ↗</a><a href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Пост с прайсом ↗</a></div><div class="meta-grid"><div><b id="totalCount">—</b><span>позиций в каталоге</span></div><div><b>19 875</b><span>пустых строк убрано из снимка</span></div><div><b>Без макросов</b><span>поиск в браузере</span></div></div></div><div class="panel"><h2>Последняя проверка</h2><p id="updateSummary" role="status">Загружен сохранённый снимок от 5 ноября 2026 года.</p><ul id="changeList" class="history"></ul><button id="export">Скачать текущий прайс CSV</button></div><div class="panel"><h2>Другие цены в канале</h2><p>В канале также выходят скидки и прайс отливантов. Скидки показаны в отдельном разделе: если в посте не указан объём или тип упаковки, они не заменяют цену произвольного флакона. Автоматическое обновление относится к основной Google-таблице.</p><a href="https://t.me/eaudestore/1200" target="_blank" rel="noopener">Прайс отливантов в канале ↗</a></div></section>
-<section id="promotionsView" hidden><h1>Скидки из канала</h1><p class="lede">Filippo Sorcinelli · публикация от 5 ноября 2026 года. Объём и формат в тексте поста не указаны — уточните их перед заказом.</p><div class="notice">Эти предложения сохранены отдельно и не подменяют цены вариантов в основном прайсе. Раздел обновляется при проверке новых постов канала.</div><div id="promos" class="promos"></div><p style="margin-top:20px"><a id="promoSource" href="https://t.me/eaudestore" target="_blank" rel="noopener">Открыть канал продавца ↗</a></p></section>
-<footer class="footer"><span>Личный каталог · цены в рублях · наличие уточняется у продавца</span><a class="sourceLink" target="_blank" rel="noopener">Источник данных ↗</a></footer></main></div><div id="toast" class="toast" role="status" hidden></div>
+/* Library rail. */
+.sidebar{position:sticky;top:0;height:100dvh;background:var(--p-inv-bg);color:var(--p-inv-ink);padding:36px 20px 28px;display:flex;flex-direction:column;align-self:start}
+.brand{padding:0 12px;color:#fff;font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-1.8px;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--blue-line)}.brand .brand-dot{color:var(--blue-mid)}
+.brand-caption{margin:12px 12px 0;color:#b6c6ed;font-size:13px}.nav-label{color:#a2b3de;font-size:13px;margin:52px 16px 16px}
+.nav{display:grid;gap:8px}.nav button{display:flex;align-items:center;gap:12px;min-height:52px;border:1px solid transparent;border-radius:12px;padding:12px 16px;background:transparent;color:#becdf1;font-size:14px;font-weight:500;text-align:left;transition:background-color 140ms,border-color 140ms,color 140ms}
+.nav button svg{width:19px;height:19px}.nav button.active{background:var(--blue-deep);border-color:#29428d;color:white}.nav button.active svg{color:#9cb7ff}
+.nav button.active::after{content:"";width:5px;height:5px;background:#afc5f8;border-radius:50%;margin-left:auto}
+.nav button:focus-visible{outline-color:var(--blue-line);outline-offset:2px}
+.nav-count{display:grid;place-items:center;min-width:23px;height:23px;padding:0 5px;background:#18264f;border:1px solid #31416b;border-radius:6px;font-size:13px;color:#d8e3ff;margin-left:auto}
+.sidefoot{margin-top:auto;padding:56px 12px 0;color:#b5c5e9;font-size:13px}
+.source-caption{display:flex;gap:9px;align-items:center;color:#e5edff;font-weight:500}.source-dot{width:6px;height:6px;border-radius:50%;background:#afc5f8}
+.sidefoot p{margin:12px 0 24px;line-height:1.8}.sidefoot a{display:flex;align-items:center;justify-content:space-between;width:fit-content;gap:12px;color:#d5e1ff;margin:12px 0 0}.sidefoot a svg{width:15px;height:15px}
+
+/* Shared rhythm and controls. */
+.main{min-width:0;padding:28px 44px 24px;width:100%;max-width:1592px;margin:0 auto}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.sync-status{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+.status-dot{width:7px;height:7px;background:var(--blue-strong);border-radius:50%;flex:none;box-shadow:0 0 0 4px var(--blue-wash)}
+.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line-strong);border-radius:var(--r-btn);padding:10px 18px;background:white;font-size:14px;font-weight:500;line-height:1.45;text-decoration:none;white-space:nowrap}
+.btn--primary{background:var(--action);border-color:var(--action);color:white}.btn--secondary{background:white;color:var(--blue-deep);border-color:var(--line-strong)}.btn svg{width:18px;height:18px}
+.refresh-button{min-width:180px}.refresh-button.is-loading{background:var(--blue-deep);border-color:var(--blue-deep);opacity:1;cursor:progress}.refresh-button.is-loading svg{color:var(--blue-line)}
+.refresh-button.is-success{background:var(--blue-strong);border-color:var(--blue-strong)}.refresh-button.is-error{background:var(--blue-deep);border-color:var(--blue-deep)}
+.icon-button{min-width:40px;min-height:40px;display:grid;place-items:center;border:0;border-radius:8px;background:transparent;color:var(--muted)}
+.catalog-heading{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:36px 0 28px}
+.section-kicker{font-size:13px;font-weight:500;color:var(--muted);margin:0 0 12px}
+h1{font-family:var(--font-display);font-size:clamp(32px,3.05vw,44px);line-height:1.18;letter-spacing:var(--display-tracking);font-weight:var(--display-weight);margin:0}
+h2{font-size:21px;letter-spacing:-.025em;line-height:1.3;font-weight:500;margin:0 0 16px}p{margin:0 0 16px}
+.lede{color:var(--muted);font-size:16px;line-height:1.7;margin:16px 0 0}
+.catalog-size{display:grid;gap:6px;padding-left:28px;border-left:1px solid var(--line-strong);min-width:158px;font-size:13px;color:var(--muted)}
+.catalog-size strong{font-size:28px;font-weight:500;line-height:1.1;letter-spacing:-.04em;color:var(--blue-strong);font-variant-numeric:tabular-nums}
+
+/* Native selects stay keyboard- and touch-friendly. */
+.search-panel{padding:24px;background:white;border:1px solid #d0ddf9;border-radius:var(--r-lg)}
+.searchbox{min-height:64px;display:flex;align-items:center;gap:16px;padding:8px 12px;background:var(--bg);border:1px solid var(--control-line);border-radius:var(--r-md);transition:border-color 140ms,background-color 140ms,box-shadow 140ms}
+.search-icon{display:grid;place-items:center;width:40px;height:40px;flex:none;background:var(--blue-wash);color:var(--blue-strong);border-radius:10px}.search-icon svg{width:21px;height:21px}
+.searchbox input{width:100%;min-width:0;height:42px;border:0;border-radius:0;background:transparent;outline:0;color:var(--ink);font-size:17px}
+input::placeholder{color:#68799c;opacity:1}input[type=search]::-webkit-search-cancel-button{display:none}
+.searchbox:focus-within{background:white;border-color:var(--action);box-shadow:0 0 0 3px #2e5de617}
+.filter-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:20px 0 16px}.filter-heading>span{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13px;font-weight:500;color:var(--muted)}.filter-heading svg{width:16px;height:16px}
+.filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;background:var(--blue-wash);color:var(--blue-strong);border-radius:6px;padding:0 6px;font-variant-numeric:tabular-nums}
+.reset-button{min-height:32px;padding:4px 0 4px 8px;display:flex;align-items:center;justify-content:flex-end;gap:5px;border:0;border-radius:4px;background:transparent;color:var(--muted);font-size:13px;transition:color 140ms}.reset-button svg{width:14px;height:14px}.reset-button.has-filters{color:var(--action)}
+.filters{display:grid;grid-template-columns:1fr 1fr 1fr 1.42fr;gap:16px}.filter{min-width:0;display:grid;gap:8px;align-content:start}.filter>label,.field-label{color:#3e5078;font-size:13px;font-weight:500}
+.control{position:relative;min-width:0;display:flex;align-items:center;height:48px;border:1px solid var(--control-line);border-radius:var(--r-sm);background:white;transition:border-color 140ms,box-shadow 140ms,background-color 140ms}
+.control select,.control input{appearance:none;-webkit-appearance:none;width:100%;height:100%;min-width:0;outline:none;border:0;border-radius:inherit;color:var(--ink);background:transparent;padding:0 13px;font-size:14px;font-weight:500}
+.control select{padding-right:36px}.control .chevron{position:absolute;right:11px;width:17px;height:17px;color:#5d78af;pointer-events:none}
+.control:focus-within{border-color:var(--action);box-shadow:0 0 0 3px #2e5de617}.control.has-value{background:#f0f4ff;border-color:var(--action)}.control.has-value select,.control.has-value input,.control.has-value .chevron{color:var(--blue-strong)}.control.has-value:focus-within{border-color:var(--action)}
+.control input::-webkit-inner-spin-button,.control input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.control input[type=number]{-moz-appearance:textfield}
+.price-range{display:grid;align-items:center;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px}.range-dash{color:#8699bd;font-size:13px}
+
+/* Real results, with the same variant names and prices. */
+.resultsbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 0 20px}.resultsbar strong{font-size:16px;font-weight:500}.resultsbar p{font-size:13px;color:var(--muted);margin:6px 0 0}
+.sort-wrap{position:relative;display:flex;align-items:center;flex:none}.sort{appearance:none;-webkit-appearance:none;min-height:40px;max-width:210px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--muted);padding:8px 30px 8px 10px;font-size:13px;outline:0}.sort:focus-visible{border-color:var(--action);box-shadow:0 0 0 3px #2e5de617}.sort-wrap svg{position:absolute;right:7px;width:16px;height:16px;pointer-events:none;color:var(--muted)}
+.tablewrap{overflow:hidden;border:1px solid #d0ddf9;border-radius:var(--r-lg);background:white}table{border-collapse:collapse;width:100%;table-layout:fixed}
+th{background:var(--blue-wash);color:#425884;font-size:13px;font-weight:500;text-align:left;height:48px;padding:12px 24px}th:nth-child(1){width:60%}th:nth-child(2){width:14%}th:nth-child(3){width:18%;text-align:right}th:nth-child(4){width:8%;text-align:center;padding:12px 16px}th svg{width:17px;height:17px;vertical-align:middle}
+td{padding:20px 24px;border-top:1px solid #e7edf9;vertical-align:middle}tbody tr{transition:background-color 140ms}
+.name{font-size:15px;line-height:1.55;font-weight:500;color:#18264c;overflow-wrap:anywhere}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.badge{display:inline-flex;align-items:center;gap:4px;border:1px solid #dbe5fc;background:#f3f6ff;border-radius:5px;padding:1px 6px;font-size:13px;font-weight:400;line-height:1.5;color:#53678e;white-space:nowrap}.badge-tester{background:#e6edfd;border-color:#cbdafa;color:#20419f}
+.vol{color:var(--muted);font-size:14px;white-space:nowrap}.price{color:var(--blue-deep);font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;letter-spacing:-.02em}
+.favcell{text-align:center;padding:16px 12px}.fav{display:grid;place-items:center;width:40px;height:40px;padding:8px;border:1px solid transparent;border-radius:10px;background:transparent;color:#7b91bc;transition:color 140ms,background-color 140ms,border-color 140ms}.fav svg{width:20px;height:20px}.fav.selected{background:var(--blue-wash);color:var(--action);border-color:#cfddfb}.fav.selected svg{fill:var(--action);stroke:var(--action)}
+.pagination{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0 32px;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}.pagination .buttons{display:flex;gap:8px}.pagination .btn{min-height:42px;padding:8px 14px;font-size:13px}.pagination .btn:disabled{opacity:.4}.arrow-back{rotate:180deg}
+.empty{text-align:center;padding:56px 24px;color:var(--muted);font-size:14px}.empty-icon{width:56px;height:56px;display:grid;place-items:center;border:1px solid var(--blue-line);border-radius:16px;background:var(--blue-wash);color:var(--blue-strong);margin:0 auto 24px}.empty-icon svg{width:24px;height:24px}.empty strong{display:block;color:var(--ink);font-size:22px;font-weight:500;margin-bottom:8px}.empty>span:last-child{display:block;max-width:360px;margin:0 auto}
+
+/* Updates and offers keep one card family and the same action styles. */
+.view-heading{padding:36px 0 28px}.panel{padding:28px;border:1px solid #d0ddf9;border-radius:var(--r-lg);background:white;margin-bottom:20px}.panel-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px}.panel-heading h2{margin:0}.panel-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--blue-wash);color:var(--blue-strong)}
+.panel p{max-width:760px;color:var(--muted);font-size:16px;line-height:1.75}.actions{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);margin-top:28px;padding-top:24px}.meta-grid b{display:block;font-size:24px;line-height:1.3;font-weight:500;color:var(--blue-deep);margin-bottom:6px;letter-spacing:-.03em}.meta-grid span{color:var(--muted);font-size:13px}
+.history{font-size:14px;padding-left:20px;max-height:400px;overflow:auto}.history:empty{display:none}.history li{border-bottom:1px solid var(--line);padding:12px 0}
+.notice{padding:16px 20px;border:1px solid var(--blue-line);border-radius:var(--r-md);background:var(--blue-wash);color:#304a88;font-size:14px;line-height:1.7;margin:20px 0}.notice:empty{display:none}.promo-notice{margin-top:0}
+.promos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.promo{position:relative;padding:24px;border:1px solid #d0ddf9;border-radius:var(--r-lg);background:white}.promo span{display:block;font-size:13px;color:var(--muted)}.promo strong{display:block;margin:12px 0 24px;font-size:20px;font-weight:500;letter-spacing:-.03em}.promo b{display:block;font-size:23px;font-weight:500;letter-spacing:-.03em;color:var(--blue-strong);font-variant-numeric:tabular-nums}.promo-source{margin-top:24px;font-size:14px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:24px;color:var(--muted);font-size:13px}.footer-divider{color:#8ba1cc;margin:0 10px}.footer>a{flex:none}
+.toast{position:fixed;bottom:24px;left:50%;translate:-50% 0;z-index:20;width:max-content;max-width:calc(100vw - 32px);background:var(--blue-deep);color:white;border:1px solid #445aa0;border-radius:var(--r-md);padding:16px 20px;font-size:14px;line-height:1.6}
+
+@media(hover:hover) and (pointer:fine){
+  .nav button:hover{color:white;background:#142554;border-color:#29428d}.nav button.active:hover{background:var(--blue-deep)}
+  .control:hover,.searchbox:hover{border-color:var(--action)}.control:focus-within:hover,.searchbox:focus-within:hover{border-color:var(--action)}
+  .sort:hover{border-color:var(--blue-line);background:white}.icon-button:hover{background:var(--blue-wash);color:var(--action)}.reset-button:hover{color:var(--blue-strong)}
+  tbody tr:hover{background:#f4f7ff}.fav:hover{color:var(--action);background:var(--blue-wash);border-color:#cfddfb}
+}
+@media(min-width:1600px){.main{padding-left:56px;padding-right:56px}}
+@media(max-width:1200px){
+  .shell{grid-template-columns:220px minmax(0,1fr)}.sidebar{padding-left:12px;padding-right:12px}.brand{font-size:26px}.main{padding:24px 28px}
+  .filters{gap:16px;grid-template-columns:1fr 1fr}.price-filter{grid-column:auto}.price-range{max-width:none}.catalog-size{min-width:135px;padding-left:20px}.catalog-size strong{font-size:26px}
+  td,th{padding-left:20px;padding-right:20px}.favcell{padding-left:8px;padding-right:8px}
+}
+@media(max-width:1000px){
+  .shell{grid-template-columns:196px minmax(0,1fr)}.brand{font-size:24px;padding:0 8px}.brand-caption{margin-left:8px}.nav button{padding:12px;gap:10px;font-size:13px}.nav-label{margin-left:12px}.sidefoot{padding-left:8px;padding-right:8px}.main{padding:24px}
+  .search-panel{padding:20px}.catalog-heading{gap:24px}.catalog-size{display:none}.filters{grid-template-columns:1fr 1fr;gap:16px}.price-filter{grid-column:auto}.price-range{gap:5px}.control input{padding:0 10px}.control select{padding-left:12px}
+  .resultsbar{align-items:flex-start;gap:16px}.resultsbar p{max-width:300px}.sort{max-width:170px;padding-left:6px}
+  th:nth-child(1){width:65%}th:nth-child(2),td.vol{display:none}th:nth-child(3){width:25%}th:nth-child(4){width:10%}
+  .name{font-size:14px}td{padding:20px 16px}.price{font-size:17px}.favcell{padding:12px 8px}.fav{width:32px;height:36px;padding:6px}.meta-grid{gap:16px}.meta-grid b{font-size:20px}.footer{align-items:flex-start}.footer>span{max-width:320px}
+}
+@media(max-width:720px){
+  .shell{display:block}.sidebar{position:static;height:auto;padding:24px 20px 12px}.brand{font-size:27px;padding:0 4px;width:fit-content}.brand-caption,.nav-label{display:none}
+  .nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:24px}.nav button{min-height:60px;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:8px 2px;text-align:center;font-size:13px;line-height:1.2;border-radius:10px}.nav button::after{display:none!important}.nav button svg{width:18px;height:18px}.nav-count,.desktop-word,.sidefoot{display:none}
+  .main{padding:20px}.topline{gap:16px;padding-bottom:20px}.sync-status{gap:9px;font-size:13px;line-height:1.5}.status-dot{width:5px;height:5px;box-shadow:0 0 0 3px var(--blue-wash)}.refresh-button{min-width:0;gap:6px;font-size:13px;padding:10px 12px;flex:none}.refresh-button svg{width:16px;height:16px}
+  .catalog-heading,.view-heading{padding:28px 0 24px}.section-kicker{margin-bottom:10px}h1{font-size:32px;line-height:1.2}.lede{font-size:15px;line-height:1.7;margin-top:14px}.desktop-break{display:none}
+  .search-panel{padding:16px;border-radius:16px}.searchbox{padding:6px 8px;min-height:56px;gap:10px;border-radius:11px}.search-icon{width:32px;height:32px;background:transparent}.searchbox input{font-size:16px;height:40px}.search-icon svg{width:20px;height:20px}.searchbox .icon-button{width:28px;min-width:28px}
+  .filter-heading{margin:16px 0 12px;gap:8px}.filters{gap:16px 12px}.control{height:48px;border-radius:10px}.control select{font-size:14px;padding-left:11px;padding-right:29px}.control .chevron{right:8px;width:16px}.control input{font-size:16px;padding:0 9px}.price-range{gap:4px}.range-dash{font-size:13px}
+  .resultsbar{padding:24px 0 16px;gap:12px}.resultsbar strong{font-size:15px}.resultsbar p{display:none}.sort{max-width:172px;font-size:13px;padding-top:0;padding-bottom:0;min-height:28px}.sort-wrap svg{width:15px;right:4px}
+  .tablewrap{border-radius:16px}thead{display:none}tbody tr{display:grid;grid-template-columns:minmax(0,1fr) 40px;gap:12px;padding:20px;border-top:1px solid var(--line)}tbody tr:first-child{border-top:0}td{border:0;padding:0}.namecell{grid-column:1}.name{font-size:14px;line-height:1.65}.tags{gap:6px;margin-top:10px}.badge{font-size:13px;padding:0 5px}.price{grid-column:1;font-size:20px;text-align:left;line-height:1.3}.favcell{grid-column:2;grid-row:1/3;padding:0;align-self:start}.fav{width:40px;height:40px;padding:9px;background:#f5f8ff;border-color:#e1e9fc}.fav svg{width:21px;height:21px}
+  .pagination{padding:20px 0 28px;gap:8px}.pagination .btn{min-height:42px;padding:8px 10px;gap:6px}.pagination .btn svg{width:14px;height:14px}
+  .panel{padding:20px;border-radius:16px;margin-bottom:16px}.panel p{font-size:15px}.meta-grid{grid-template-columns:1fr;gap:16px}.meta-grid>div{display:flex;align-items:baseline;gap:12px}.meta-grid b{min-width:112px;font-size:20px;margin:0}.promos{grid-template-columns:1fr;gap:12px}.promo{padding:24px;border-radius:16px}.notice{padding:16px}
+  .footer{display:block;padding-top:20px}.footer>span{display:block;max-width:none}.footer>a{display:inline-block;margin-top:16px}.toast{bottom:16px;font-size:13px;padding:12px 16px}
+}
+@media(max-width:360px){.main{padding-left:16px;padding-right:16px}.sidebar{padding-left:16px;padding-right:16px}.topline{gap:12px}h1{font-size:29px}.search-panel{padding:12px}.control select{font-size:13px}.pagination{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.control,.searchbox,.fav,.nav button,tbody tr{transition:none}}
+
+/*
+  taste-skill motion.css - the micro-interactions a company site has (figma.com, x.ai): one small
+  opt-in layer over system.css and ui/cards.css. Link it after them (data-motion on <html> is optional);
+  load motion.js once (it adds the tab indicator, the number tick and the card loops).
+  The layer is ON as soon as this file is linked: no attribute is needed (a hover shot of a linked card or photo
+  shows the 2px lift and the 1.03 zoom). <html data-motion="off"> switches the whole layer off; data-motion="live"
+  is the number tick in a headless shot (motion.js).
+  references/motion.md says what moves and how fast. Everything here answers the pointer, the
+  keyboard or a number coming into view once; nothing moves because the page scrolled.
+
+  Hover rules sit under (hover: hover) and (pointer: fine): a phone never keeps a stuck hover.
+  Under prefers-reduced-motion colours still change; nothing moves or scales.
+*/
+
+:root {
+  --m-in: 140ms;                              /* hover in: buttons, links, nav, tabs */
+  --m-out: 200ms;                             /* hover out, panel close */
+  --m-press: 90ms;                            /* a press */
+  --m-panel: 200ms;                           /* a menu or sheet opening */
+  --m-slide: 240ms;                           /* an indicator travelling between two tabs or links */
+  --m-image: 600ms;                           /* a photograph scaling inside its mask */
+  --m-ease: cubic-bezier(.2, .8, .2, 1);      /* ease-out: fast start, soft landing */
+  --m-ease-io: cubic-bezier(.65, 0, .35, 1);  /* the indicator: leaves and lands softly */
+  --m-cycle: 3.2s;                            /* one cycle of a card's loop (2.5-4 s) */
+  --m-lift: -2px;
+}
+
+/* ---------------------------------------------------------------- buttons */
+html:not([data-motion="off"]) .btn {
+  position: relative;
+  transition: background-color var(--m-out) var(--m-ease), color var(--m-out) var(--m-ease),
+              border-color var(--m-out) var(--m-ease), box-shadow var(--m-out) var(--m-ease),
+              transform var(--m-press) var(--m-ease);
+}
+/* the tone moves toward the ground: a black button greys a little on white, a white one on black */
+html:not([data-motion="off"]) .btn--primary:hover { background: color-mix(in oklab, var(--action) 84%, var(--bg)); }
+html:not([data-motion="off"]) .btn--secondary:hover {
+  background: color-mix(in oklab, var(--bg) 92%, var(--ink));
+  border-color: color-mix(in oklab, var(--ink) 32%, transparent);
+}
+html:not([data-motion="off"]) .btn:hover { transition-duration: var(--m-in), var(--m-in), var(--m-in), var(--m-in), var(--m-press); }
+html:not([data-motion="off"]) .btn:active { transform: translateY(1px) scale(.985); }
+/* the step: a button rises 1px on hover (2px on the large size) and presses 1px down with a 1.5% shrink on
+   click; pointer only. The text-link secondary (arrow and block looks) keeps its underline and does not step.
+   Reduced motion keeps the colour change only (see the end of this file). */
+@media (hover: hover) and (pointer: fine) {
+  html:not([data-motion="off"]) .btn:hover { transform: translateY(-1px); }
+  html:not([data-motion="off"]) .btn--xl:hover { transform: translateY(-2px); }
+  html:not([data-motion="off"]):is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary:hover { transform: none; }
+  html:not([data-motion="off"]) .btn:active { transform: translateY(1px) scale(.985); }
+  html:not([data-motion="off"]):is([data-buttons="arrow"], [data-buttons="block"]) .btn--secondary:active { transform: scale(.985); }
+}
+
+/* the arrow: the text arrow (.btn--arrow, .link) nudges 3px; the drawn arrow (.m-arrow) grows its
+   stem and moves its head 3px, the way a good product site's "Learn more" does */
+html:not([data-motion="off"]) :is(.btn--arrow, .link)::after { transition: transform var(--m-out) var(--m-ease); }
+html:not([data-motion="off"]) :is(.btn--arrow, .link):hover::after { transform: translateX(3px); transition-duration: var(--m-in); }
+.m-arrow { width: 12px; height: 12px; flex: none; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.6;
+           stroke-linecap: round; stroke-linejoin: round; }
+.m-arrow__stem { opacity: 0; transform: scaleX(.2); transform-origin: 1px 50%; transform-box: fill-box;
+                 transition: opacity var(--m-out) var(--m-ease), transform var(--m-out) var(--m-ease); }
+.m-arrow__head { transition: transform var(--m-out) var(--m-ease); }
+:is(a, button):hover > .m-arrow .m-arrow__stem,
+:is(a, button):focus-visible > .m-arrow .m-arrow__stem { opacity: 1; transform: none; transition-duration: var(--m-in); }
+:is(a, button):hover > .m-arrow .m-arrow__head,
+:is(a, button):focus-visible > .m-arrow .m-arrow__head { transform: translateX(3px); transition-duration: var(--m-in); }
+
+/* a pill that is a link (the line above a hero headline) */
+html:not([data-motion="off"]) a.pill { transition: background-color var(--m-out) var(--m-ease), border-color var(--m-out) var(--m-ease); }
+html:not([data-motion="off"]) a.pill:hover { background: color-mix(in oklab, var(--card) 90%, var(--ink)); border-color: var(--line-strong); transition-duration: var(--m-in); }
+
+/* ---------------------------------------------------------------- links: an underline that draws */
+/* .link and links in running text: a rest line, and the ink line draws left to right on hover and
+   leaves to the right. A link in a sentence rests on its own colour at 45% (about 3.3:1 on its
+   ground), so it reads as a link even when it is the same colour as the text (WCAG 1.4.1); .link
+   and .m-link carry an arrow or sit alone and rest on the faint hairline */
+html:not([data-motion="off"]) :is(.link, .m-link, p a:not([class]), .footer ul a, .footer .link) {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor), linear-gradient(var(--m-rest, var(--line-strong)), var(--m-rest, var(--line-strong)));
+  background-repeat: no-repeat; background-size: 0% 1px, 100% 1px;
+  background-position: right 0 bottom 0, 0 100%;
+  transition: background-size var(--m-out) var(--m-ease), color var(--m-out) var(--m-ease);
+  padding-bottom: 2px;
+}
+/* set on its own rule: the shared rule above is (0,3,1) through :is(.footer .link) and would win */
+html:not([data-motion="off"]) p a:not([class]) { --m-rest: color-mix(in oklab, currentColor 45%, transparent); }
+html:not([data-motion="off"]) :is(.footer ul a, .m-link--bare):not(:hover, :focus-visible) { background-size: 0% 1px, 0% 1px; }
+html:not([data-motion="off"]) :is(.link, .m-link, p a:not([class]), .footer ul a, .footer .link):is(:hover, :focus-visible) {
+  background-size: 100% 1px, 100% 1px; background-position: left 0 bottom 0, 0 100%; transition-duration: var(--m-in);
+}
+/* the link's arrow is not underlined: the line runs under the words only */
+html:not([data-motion="off"]) .link { background-size: 0% 1px, calc(100% - 1em - var(--s-2)) 1px; }
+html:not([data-motion="off"]) .link:is(:hover, :focus-visible) { background-size: calc(100% - 1em - var(--s-2)) 1px, calc(100% - 1em - var(--s-2)) 1px; }
+html:not([data-motion="off"]) .link, html:not([data-motion="off"]) .link:is(:hover, :focus-visible) { background-position: 0 100%, 0 100%; }
+html:not([data-motion="off"]) .footer ul a:hover { color: var(--ink); }
+
+/* ---------------------------------------------------------------- navigation */
+/* the nav words take no pill (ST-08, ST-11): system.css draws the underline under a word from the left on hover and focus, and
+   takes it away to the right; the page you are on keeps its still bar (system.css draws it, at the same inset) */
+@media (min-width: 1024px) {
+  /* the full-width panel: fades and settles 6px in 200ms, its columns follow 30ms apart; it closes
+     in 120ms. While one menu is open, the next word swaps the panel at once (motion.js .m-menu-open) */
+  html:not([data-motion="off"]) .nav__menu {
+    transform: translateY(-6px);
+    transition: opacity 120ms var(--m-ease), transform 120ms var(--m-ease), visibility 0s linear 120ms;
+  }
+  html:not([data-motion="off"]) .nav__item:is(:hover, :focus-within) > .nav__menu {
+    transition: opacity var(--m-panel) var(--m-ease) 150ms, transform var(--m-panel) var(--m-ease) 150ms, visibility 0s linear 150ms;
+  }
+  /* .m-menu-open comes on when the first panel starts to show (150ms): from then the next word swaps
+     the panel at once. Duration and delay go to 0, the properties stay listed, so the panel that is
+     still fading in finishes its own 200ms instead of snapping */
+  html:not([data-motion="off"]) .nav.m-menu-open .nav__menu,
+  html:not([data-motion="off"]) .nav.m-menu-open .nav__item:is(:hover, :focus-within) > .nav__menu { transition-duration: 0s; transition-delay: 0s; }
+  html:not([data-motion="off"]) .nav__menu .grid > * { opacity: 0; transform: translateY(4px); transition: opacity 100ms var(--m-ease), transform 100ms var(--m-ease); }
+  html:not([data-motion="off"]) .nav__item:is(:hover, :focus-within) > .nav__menu .grid > * {
+    opacity: 1; transform: none; transition: opacity 260ms var(--m-ease), transform 260ms var(--m-ease);
+    transition-delay: calc(170ms + var(--m-i, 0) * 30ms);
+  }
+  html:not([data-motion="off"]) .nav.m-menu-open .nav__item:is(:hover, :focus-within) > .nav__menu .grid > * { transition-delay: calc(var(--m-i, 0) * 30ms); }
+  html:not([data-motion="off"]) .nav__menu .grid > :nth-child(2) { --m-i: 1; }
+  html:not([data-motion="off"]) .nav__menu .grid > :nth-child(3) { --m-i: 2; }
+  html:not([data-motion="off"]) .nav__menu .grid > :nth-child(4) { --m-i: 3; }
+  html:not([data-motion="off"]) .nav__menu .grid > :nth-child(n + 5) { --m-i: 4; }
+  html:not([data-motion="off"]) .menu-col a { transition: color var(--m-out) var(--m-ease); }
+  html:not([data-motion="off"]) .menu-col a:hover { transition-duration: var(--m-in); }
+  html:not([data-motion="off"]) .menu-card .panel { transition: border-color var(--m-out) var(--m-ease); }
+}
+/* the phone sheet slides in 8px and fades (system.js opens it) */
+@media (max-width: 1023px) {
+  html:not([data-motion="off"]) .nav.is-open .nav__links { transition: opacity var(--m-panel) var(--m-ease), transform var(--m-panel) var(--m-ease); }
+  @starting-style { html:not([data-motion="off"]) .nav.is-open .nav__links { opacity: 0; transform: translateY(-8px); } }
+}
+
+/* ---------------------------------------------------------------- tabs: the indicator slides */
+html:not([data-motion="off"]) .tabs.m-has-ind { position: relative; isolation: isolate; }
+html:not([data-motion="off"]) .tabs.m-has-ind .tab { position: relative; z-index: 1; }
+html:not([data-motion="off"]) .tabs.m-has-ind .tab[aria-selected="true"] { background: transparent; border-color: transparent; }
+.m-tab-ind {
+  position: absolute; left: 0; top: 0; z-index: 0; width: var(--w, 0px); height: var(--h, 0px);
+  border-radius: var(--r-btn); background: var(--ink); pointer-events: none;
+  transform: translate(var(--x, 0px), var(--y, 0px));
+  transition: transform var(--m-slide) var(--m-ease-io), width var(--m-slide) var(--m-ease-io), height var(--m-slide) var(--m-ease-io);
+}
+.m-tab-ind.is-jump { transition: none; }
+html:not([data-motion="off"]) .tab { transition: color var(--m-slide) var(--m-ease), border-color var(--m-out) var(--m-ease), background-color var(--m-out) var(--m-ease); }
+
+/* ---------------------------------------------------------------- focus: the ring settles in */
+/* only on the plain controls, never on a part of a loop, and not on an element that runs its own
+   animation (mark it .m-anim): an animation set here would replace that element's own */
+html:not([data-motion="off"]) :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible:not([data-m-loop] *, .m-anim, .loop-pause) {
+  animation: m-focus var(--m-out) var(--m-ease);
+}
+@keyframes m-focus { from { outline-offset: 6px; outline-color: transparent; } }
+
+/* ---------------------------------------------------------------- cards: a 2px lift */
+/* the card rises 2px, its border and shadow deepen; a card without its own box (.card--open) lifts
+   its panel. Never tilts, flips or follows the pointer */
+html:not([data-motion="off"]) .card:not(.card--open, .card--plan) {
+  transition: transform var(--m-out) var(--m-ease), border-color var(--m-out) var(--m-ease), box-shadow var(--m-out) var(--m-ease);
+}
+html:not([data-motion="off"]) .card--open > .panel { transition: transform var(--m-out) var(--m-ease), box-shadow var(--m-out) var(--m-ease); }
+@media (hover: hover) and (pointer: fine) {
+  html:not([data-motion="off"]) .card:not(.card--open, .card--plan, .m-nolift):hover {
+    transform: translateY(var(--m-lift));
+    border-color: color-mix(in oklab, var(--ink) 16%, transparent);
+    /* the shadow is deeper on a dark card (its lightness l): about .2 on white, .64 on near-black */
+    box-shadow: inset 0 1px 0 var(--c-hi, transparent), 0 1px 2px rgb(0 0 0 / .06),
+                0 14px 32px -18px oklch(from var(--card, #fff) 0 0 0 / calc(0.75 - l * 0.55));
+    transition-duration: 180ms;
+  }
+  html:not([data-motion="off"]) .card--open:not(.m-nolift):hover > .panel {
+    transform: translateY(var(--m-lift)); box-shadow: 0 14px 32px -18px oklch(from var(--bg, #fff) 0 0 0 / calc(0.75 - l * 0.55)); transition-duration: 180ms;
+  }
+}
+
+/* ---------------------------------------------------------------- photographs: 1.03 inside the mask */
+/* a photograph in a link or a linked card grows 3% inside its own mask (the frame, the tile, a .m-zoom wrapper);
+   the mask clips it, so the box never moves. .m-zoom is the hook for any other photograph: wrap it. */
+.m-zoom { overflow: clip; }
+html:not([data-motion="off"]) :is(.frame__img, .tile__media > img, .m-zoom img, .m-zoom > video) {
+  transition: transform var(--m-image) var(--m-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  html:not([data-motion="off"]) :is(a, .card:has(a), .m-zoom):hover :is(.frame__img, .tile__media > img),
+  html:not([data-motion="off"]) .m-zoom:hover :is(img, video) { transform: scale(1.03); }
+}
+
+/* ---------------------------------------------------------------- inputs, switches, checks */
+html:not([data-motion="off"]) .field :is(input, select, textarea), .m-input {
+  transition: border-color var(--m-out) var(--m-ease), box-shadow var(--m-out) var(--m-ease), background-color var(--m-out) var(--m-ease);
+}
+html:not([data-motion="off"]) .field :is(input, select, textarea):hover, .m-input:hover { border-color: color-mix(in oklab, var(--ink) 48%, transparent); }
+html:not([data-motion="off"]) .field :is(input, select, textarea):focus, .m-input:focus {
+  outline: none; border-color: var(--action);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--action) 20%, transparent); transition-duration: var(--m-in);
+}
+/* a switch: <button class="m-switch" role="switch" aria-checked="false" aria-label="..."></button>
+   (motion.js flips aria-checked on click unless the page handles it). The knob slides in 180ms and
+   stretches 4px while pressed. The off track is ink at 48% (3.3:1 or more against the knob and the
+   ground, the 3:1 a control needs) */
+.m-switch {
+  position: relative; flex: none; width: 40px; height: 24px; padding: 0; border: 0; border-radius: 999px; cursor: pointer;
+  background: color-mix(in oklab, var(--ink) 48%, var(--bg));
+  transition: background-color 180ms var(--m-ease);
+}
+.m-switch::before {
+  content: ""; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; border-radius: 999px;
+  background: var(--bg); box-shadow: 0 1px 3px rgb(0 0 0 / .25);
+  transition: transform 180ms var(--m-ease), width var(--m-press) var(--m-ease);
+}
+.m-switch[aria-checked="true"] { background: var(--action); }
+.m-switch[aria-checked="true"]::before { transform: translateX(16px); background: var(--action-ink); }
+.m-switch:active::before { width: 22px; }
+.m-switch[aria-checked="true"]:active::before { transform: translateX(12px); }
+.m-switch:hover:not([aria-checked="true"]) { background: color-mix(in oklab, var(--ink) 58%, var(--bg)); }
+/* a check box: <input type="checkbox" class="m-check">, the tick draws in 160ms */
+.m-check {
+  appearance: none; -webkit-appearance: none; flex: none; margin: 0; width: 20px; height: 20px; border-radius: 6px; cursor: pointer;
+  border: 1px solid color-mix(in oklab, var(--ink) 48%, var(--bg)); background: var(--bg) no-repeat center / 14px 14px;
+  display: inline-grid; place-items: center;
+  transition: background-color var(--m-in) var(--m-ease), border-color var(--m-in) var(--m-ease);
+}
+.m-check::before {
+  content: ""; width: 10px; height: 6px; margin-top: -2px; border: solid var(--action-ink); border-width: 0 0 2px 2px;
+  transform: rotate(-45deg) scale(0); transform-origin: 50% 50%; transition: transform 160ms var(--m-ease);
+}
+.m-check:hover:not(:checked) { border-color: color-mix(in oklab, var(--ink) 64%, var(--bg)); }
+.m-check:checked { background-color: var(--action); border-color: var(--action); }
+.m-check:checked::before { transform: rotate(-45deg) scale(1); }
+
+/* ---------------------------------------------------------------- FAQ
+   Every answer stays open (ST-47, system.css): nothing here opens, closes or animates its height. */
+
+/* ---------------------------------------------------------------- numbers that tick once */
+[data-m-count] { font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- loops inside a card's panel */
+/* a CSS loop the page writes inside [data-m-loop] runs one cycle in --m-cycle (2.5-4 s) and repeats
+   while on screen; motion.js pauses it off screen and restarts it on hover (motion.md) */
+[data-m-loop] { --m-cycle: 3.2s; --m-still: 0.6; --m-safe: 48px; }
+/* the pause button (a 32px disc 12px in from the bottom-right corner) gets a clear band: content in
+   the flow ends --m-safe (48px) above the bottom edge, and a fading stage dissolves above that band,
+   never under the button. Size the panel so the loop's subject sits above the fade */
+[data-m-loop]:not(:has(> .stage)) { padding-bottom: var(--m-safe); }
+[data-m-loop] > .stage:is(.stage--fade-b, .stage--fade-br) { bottom: var(--m-safe); }
+/* on a phone (as ui.js does) and under reduced motion a loop holds its finished picture: the frame at
+   --m-still (0-1) of the cycle, set on the loop where the picture is complete */
+@media (max-width: 639px) {
+  [data-m-loop] * { animation-duration: var(--m-cycle) !important; animation-delay: calc(-1 * var(--m-still) * var(--m-cycle)) !important;
+                    animation-play-state: paused !important; }
+}
+[data-m-loop].is-m-off *, [data-m-loop].is-m-paused * { animation-play-state: paused !important; }
+
+/* ---------------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="off"]) .card:hover, html:not([data-motion="off"]) .card--open:hover > .panel,
+  html:not([data-motion="off"]) :is(a, .card:has(a), .m-zoom):hover :is(.frame__img, .tile__media > img, img, video),
+  html:not([data-motion="off"]) .btn:is(:hover, :active), html:not([data-motion="off"]) :is(.btn--arrow, .link):hover::after,
+  :is(a, button):hover > .m-arrow :is(.m-arrow__head, .m-arrow__stem) { transform: none !important; }
+  .m-arrow__stem { opacity: 1; transform: none; }
+  html:not([data-motion="off"]) .nav__menu, html:not([data-motion="off"]) .nav__menu .grid > * { transform: none !important; }
+  html:not([data-motion="off"]) :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible { animation: none; }
+  [data-m-loop] * { animation-duration: var(--m-cycle) !important; animation-iteration-count: infinite !important;
+                    animation-delay: calc(-1 * var(--m-still) * var(--m-cycle)) !important; animation-play-state: paused !important; }
+}
+</style>
+</head>
+<body>
+<!-- Existing application; user blue palette; Manrope; soft controls; skill hover/press layer. -->
+<a class="skip-link" href="#search">Перейти к поиску</a>
+<svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0l-1 1-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="m20 13-8 8-9-9V3h9l9 9Z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 3M18 18A8 8 0 0 1 5 15"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h3m4 0h9M4 18h9m4 0h3M9 3v6m6 6v6M4 12h11m4 0h1M17 9v6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M8 5h11v11M19 5 5 19"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"/></symbol>
+</defs></svg>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="Eaudestore — главная">eau<span>de</span>store<span class="brand-dot">.</span></a>
+    <p class="brand-caption">Ваша коллекция ароматов</p><p class="nav-label">Библиотека</p>
+    <nav class="nav" aria-label="Разделы">
+      <button data-view="catalog" class="active" aria-current="page"><svg><use href="#i-grid"/></svg><span>Каталог</span></button>
+      <button data-view="favorites"><svg><use href="#i-heart"/></svg><span>Избранное</span><span id="favCount" class="nav-count">0</span></button>
+      <button data-view="promotions"><svg><use href="#i-tag"/></svg><span>Скидки<span class="desktop-word"> из канала</span></span></button>
+      <button data-view="updates"><svg><use href="#i-refresh"/></svg><span>Обновления</span></button>
+    </nav>
+    <div class="sidefoot"><div class="source-caption"><span class="source-dot"></span>Прайс Eaudestore</div><p>Цены из таблицы продавца.<br>Наличие уточняйте при заказе.</p><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Открыть канал<svg><use href="#i-external"/></svg></a><a class="m-link" href="https://t.me/hhellbound" target="_blank" rel="noopener">Написать продавцу<svg><use href="#i-external"/></svg></a></div>
+  </aside>
+  <main class="main">
+    <header class="topline"><div class="sync-status"><span class="status-dot" aria-hidden="true"></span><span id="lastChecked">Сохранённый прайс · 5 ноября 2026</span></div><button id="refresh" class="btn btn--primary refresh-button"><svg aria-hidden="true"><use href="#i-refresh"/></svg><span>Обновить цены</span></button></header>
+    <div id="notice" class="notice" role="status"></div>
+    <section id="catalogView" aria-labelledby="heading">
+      <div class="catalog-heading"><div><p class="section-kicker">Eaudestore / подбор ароматов</p><h1 id="heading">Каталог парфюмерии</h1><p class="lede">Сравнивайте цены, выбирайте объём<br class="desktop-break"> и сохраняйте любимые ароматы.</p></div><div class="catalog-size"><strong id="heroCount">45 657</strong><span>позиций в прайсе</span></div></div>
+      <div class="search-panel">
+        <div class="searchbox"><span class="search-icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span><input id="search" type="search" autocomplete="off" placeholder="Название аромата или бренда" aria-label="Поиск по названию"><button id="clearSearch" class="icon-button" type="button" aria-label="Очистить поиск" hidden><svg><use href="#i-close"/></svg></button></div>
+        <div class="filter-heading"><span><svg aria-hidden="true"><use href="#i-sliders"/></svg>Уточнить поиск <span id="filterCount" class="filter-count" hidden></span></span><button id="reset" class="reset-button"><svg aria-hidden="true"><use href="#i-close"/></svg>Сбросить</button></div>
+        <div class="filters">
+          <div class="filter"><label for="format">Формат</label><div class="control"><select id="format"><option value="">Все форматы</option><option value="regular">Без тестеров</option><option value="tester">Тестеры</option></select><svg class="chevron" aria-hidden="true"><use href="#i-chevron"/></svg></div></div>
+          <div class="filter"><label for="concentration">Концентрация</label><div class="control"><select id="concentration"><option value="">Любая</option><option>EDP</option><option>EDT</option><option>EDC</option><option>EXTRAIT</option><option>PARFUM</option></select><svg class="chevron" aria-hidden="true"><use href="#i-chevron"/></svg></div></div>
+          <div class="filter"><label for="volume">Объём</label><div class="control"><select id="volume"><option value="">Любой объём</option><option value="small">До 30 мл</option><option value="medium">31–75 мл</option><option value="large">76–125 мл</option><option value="xl">Больше 125 мл</option></select><svg class="chevron" aria-hidden="true"><use href="#i-chevron"/></svg></div></div>
+          <div class="filter price-filter"><span class="field-label" id="priceLabel">Цена, ₽</span><div class="price-range"><div class="control"><label class="sr-only" for="minPrice">Цена от, ₽</label><input id="minPrice" type="number" min="0" placeholder="От" inputmode="numeric" aria-describedby="priceLabel"></div><span class="range-dash" aria-hidden="true">—</span><div class="control"><label class="sr-only" for="maxPrice">Цена до, ₽</label><input id="maxPrice" type="number" min="0" placeholder="До" inputmode="numeric" aria-describedby="priceLabel"></div></div></div>
+        </div>
+      </div>
+      <div class="resultsbar"><div><strong id="resultCount" aria-live="polite"></strong><p id="resultHint">Весь ассортимент продавца, включая косметику и аксессуары</p></div><div class="sort-wrap"><select class="sort" id="sort" aria-label="Сортировка"><option value="source">Как в прайсе</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option><option value="az">По названию А–Я</option></select><svg aria-hidden="true"><use href="#i-chevron"/></svg></div></div>
+      <div class="tablewrap"><table aria-label="Каталог товаров"><thead><tr><th scope="col">Наименование</th><th scope="col">Объём</th><th scope="col">Цена, ₽</th><th scope="col"><svg aria-label="Избранное"><use href="#i-heart"/></svg></th></tr></thead><tbody id="rows"></tbody></table><div id="empty" class="empty" hidden><span class="empty-icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span><strong>Ничего не нашлось</strong><span>Попробуйте часть названия или сбросьте фильтры.</span></div></div>
+      <div class="pagination"><span id="range"></span><div class="buttons"><button id="prev" class="btn btn--secondary" aria-label="Предыдущая страница"><svg class="arrow-back" aria-hidden="true"><use href="#i-arrow"/></svg>Назад</button><button id="next" class="btn btn--secondary" aria-label="Следующая страница">Далее<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div></div>
+    </section>
+    <section id="updatesView" hidden>
+      <div class="view-heading"><p class="section-kicker">Eaudestore / источник данных</p><h1>Обновления прайса</h1><p class="lede">Цены проверяются при открытии каталога<br class="desktop-break"> и по кнопке «Обновить цены».</p></div>
+      <div class="panel"><div class="panel-heading"><span class="panel-icon"><svg><use href="#i-grid"/></svg></span><h2>Основной источник</h2></div><p>Google-таблица из закреплённого поста. В канале файл обозначен как прайс за сентябрь 2026 года. Дата проверки показывает, когда данные были получены, а не дату изменения каждой цены.</p><div class="actions"><a class="sourceLink m-link" target="_blank" rel="noopener">Открыть Google-таблицу ↗</a><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Пост с прайсом ↗</a></div><div class="meta-grid"><div><b id="totalCount">—</b><span>позиций в каталоге</span></div><div><b>19 875</b><span>пустых строк убрано</span></div><div><b>Без макросов</b><span>поиск в браузере</span></div></div></div>
+      <div class="panel"><div class="panel-heading"><span class="panel-icon"><svg><use href="#i-refresh"/></svg></span><h2>Последняя проверка</h2></div><p id="updateSummary" role="status">Загружен сохранённый снимок от 5 ноября 2026 года.</p><ul id="changeList" class="history"></ul><button id="export" class="btn btn--secondary">Скачать текущий прайс CSV<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+      <div class="panel"><h2>Другие цены в канале</h2><p>Скидки и прайс отливантов выходят отдельно. Если в посте не указан объём или тип упаковки, скидка не заменяет цену произвольного флакона. Автоматическое обновление относится к основной Google-таблице.</p><a class="m-link" href="https://t.me/eaudestore/1200" target="_blank" rel="noopener">Прайс отливантов в канале ↗</a></div>
+    </section>
+    <section id="promotionsView" hidden><div class="view-heading"><p class="section-kicker">Eaudestore / специальные предложения</p><h1>Скидки из канала</h1><p class="lede">Filippo Sorcinelli · публикация от 5 ноября 2026 года.</p></div><div class="notice promo-notice">В посте не указаны объём и формат флакона — уточните их перед заказом. Эти предложения сохранены отдельно и не подменяют основной прайс.</div><div id="promos" class="promos"></div><p class="promo-source"><a class="m-link" id="promoSource" href="https://t.me/eaudestore/1378" target="_blank" rel="noopener">Открыть пост со скидками ↗</a></p></section>
+    <footer class="footer"><span>Eaudestore<span class="footer-divider">/</span>Цены в рублях. Наличие уточняется у продавца.</span><a class="sourceLink m-link" target="_blank" rel="noopener">Источник данных ↗</a></footer>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
 <script>(()=>{
 const SHEET_ID='1oBChZo1L0iVX8IZy4ia8n74nJBjBrX0v099Q8Lpd5KI';
 const SOURCE='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/edit';
@@ -70,14 +523,28 @@ const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n
 const number=n=>new Intl.NumberFormat('ru-RU').format(n);
 const positions=n=>number(n)+' '+(n%10===1&&n%100!==11?'позиция':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?'позиции':'позиций');
 let sourceRows=SNAPSHOT.rows,products=[],filtered=[],page=0,view='catalog',busy=false,hasRemote=false;
+let refreshTimer;
+function refreshState(state){
+ clearTimeout(refreshTimer);const button=$('#refresh');
+ button.disabled=state==='loading';button.setAttribute('aria-busy',String(state==='loading'));
+ ['loading','success','error'].forEach(s=>button.classList.toggle('is-'+s,state===s));
+ const labels={idle:'Обновить цены',loading:'Проверяем цены…',success:'Цены актуальны',error:'Повторить'};
+ button.innerHTML='<svg aria-hidden="true"><use href="#i-'+(state==='success'?'check':'refresh')+'"/></svg><span>'+labels[state]+'</span>';
+ if(state==='success')refreshTimer=setTimeout(()=>refreshState('idle'),2400);
+}
 let favorites=new Set();try{favorites=new Set(JSON.parse(localStorage.getItem('eaude-favorites')||'[]'));}catch{}
 const SIZE=60;
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(t){$('#toast').textContent=t;$('#toast').hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').hidden=true,3500);}
-function prepare(rows){products=rows.map(describe);$('#totalCount').textContent=number(rows.length);$('#favCount').textContent=favorites.size;}
+function prepare(rows){products=rows.map(describe);$('#totalCount').textContent=number(rows.length);$('#heroCount').textContent=number(rows.length);$('#favCount').textContent=favorites.size;}
 function apply(){
  const terms=normalize($('#search').value).split(' ').filter(Boolean),format=$('#format').value,conc=$('#concentration').value,vol=$('#volume').value,min=Number($('#minPrice').value)||0,max=$('#maxPrice').value===''?Infinity:Number($('#maxPrice').value);
  $('#clearSearch').hidden=!$('#search').value;
+ const filterIds=['format','concentration','volume','minPrice','maxPrice'];
+ const active=filterIds.filter(id=>$('#'+id).value!=='').length;
+ filterIds.forEach(id=>$('#'+id).closest('.control').classList.toggle('has-value',$('#'+id).value!==''));
+ $('#filterCount').textContent=active;$('#filterCount').hidden=!active;$('#filterCount').setAttribute('aria-label','Активных фильтров: '+active);
+ $('#reset').classList.toggle('has-filters',!!active||!!$('#search').value);
  filtered=products.filter(p=>terms.every(t=>p.search.includes(t))&&p.price>=min&&p.price<=max&&(!format||(format==='tester'?p.tester:!p.tester))&&(!conc||p.conc===conc)&&(!vol||(p.volume!==null&&(vol==='small'?p.volume<=30:vol==='medium'?p.volume>30&&p.volume<=75:vol==='large'?p.volume>75&&p.volume<=125:p.volume>125)))&&(view!=='favorites'||favorites.has(p.key)));
  const sort=$('#sort').value;if(sort==='low')filtered.sort((a,b)=>a.price-b.price);if(sort==='high')filtered.sort((a,b)=>b.price-a.price);if(sort==='az')filtered.sort((a,b)=>a.name.localeCompare(b.name,'ru'));
  page=0;render();
@@ -86,15 +553,15 @@ function render(){
  $('#resultCount').textContent=positions(filtered.length);
  $('#empty').hidden=!!filtered.length;
  $('#empty strong').textContent=view==='favorites'&&!favorites.size?'Здесь будут ваши ароматы':'Ничего не нашлось';
- $('#empty span').textContent=view==='favorites'&&!favorites.size?'Нажмите на звёздочку у понравившейся позиции.':'Попробуйте часть названия или сбросьте фильтры.';
- $('#rows').innerHTML=filtered.slice(page*SIZE,(page+1)*SIZE).map(p=>'<tr><td class="namecell"><div class="name">'+escapeHTML(p.name)+'</div><div class="tags">'+(p.tester?'<span class="badge">Тестер</span>':'')+(p.conc?'<span class="badge">'+p.conc+'</span>':'')+(p.volume!==null?'<span class="badge">'+p.volume+' мл</span>':'')+'</div></td><td class="vol">'+(p.volume!==null?p.volume+' мл':'—')+'</td><td class="price">'+money(p.price)+'</td><td class="favcell"><button class="fav '+(favorites.has(p.key)?'selected':'')+'" data-index="'+p.index+'" aria-label="'+(favorites.has(p.key)?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+favorites.has(p.key)+'">'+(favorites.has(p.key)?'★':'☆')+'</button></td></tr>').join('');
+ $('#empty > span:last-child').textContent=view==='favorites'&&!favorites.size?'Нажмите на сердечко у понравившейся позиции.':'Попробуйте часть названия или сбросьте фильтры.';
+ $('#rows').innerHTML=filtered.slice(page*SIZE,(page+1)*SIZE).map(p=>'<tr><td class="namecell"><div class="name">'+escapeHTML(p.name)+'</div><div class="tags">'+(p.tester?'<span class="badge badge-tester">Тестер</span>':'')+(p.conc?'<span class="badge">'+p.conc+'</span>':'')+(p.volume!==null?'<span class="badge">'+p.volume+' мл</span>':'')+'</div></td><td class="vol">'+(p.volume!==null?p.volume+' мл':'—')+'</td><td class="price">'+money(p.price)+'</td><td class="favcell"><button class="fav '+(favorites.has(p.key)?'selected':'')+'" data-index="'+p.index+'" aria-label="'+(favorites.has(p.key)?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+favorites.has(p.key)+'"><svg aria-hidden="true"><use href="#i-heart"/></svg></button></td></tr>').join('');
  $('#range').textContent=filtered.length?number(page*SIZE+1)+'–'+number(Math.min((page+1)*SIZE,filtered.length))+' из '+number(filtered.length):'0 позиций';$('#prev').disabled=page===0;$('#next').disabled=(page+1)*SIZE>=filtered.length;
 }
-function setView(next){view=next;$$('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);b.setAttribute('aria-current',b.dataset.view===view?'page':'false');});$('#catalogView').hidden=!['catalog','favorites'].includes(view);$('#updatesView').hidden=view!=='updates';$('#promotionsView').hidden=view!=='promotions';$('#heading').textContent=view==='favorites'?'Ваше избранное':'Найдите свой аромат';apply();}
+function setView(next){view=next;$$('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('#catalogView').hidden=!['catalog','favorites'].includes(view);$('#updatesView').hidden=view!=='updates';$('#promotionsView').hidden=view!=='promotions';$('#heading').textContent=view==='favorites'?'Ваше избранное':'Каталог парфюмерии';apply();}
 async function db(mode,value){return new Promise((resolve,reject)=>{if(!window.indexedDB){resolve(null);return;}const r=indexedDB.open('eaude-catalog',1);r.onupgradeneeded=()=>r.result.createObjectStore('snapshots');r.onerror=()=>reject(r.error);r.onsuccess=()=>{const d=r.result,tx=d.transaction('snapshots',mode==='put'?'readwrite':'readonly'),s=tx.objectStore('snapshots'),q=mode==='put'?s.put(value,'latest'):s.get('latest');q.onsuccess=()=>{const v=q.result;tx.oncomplete=()=>{d.close();resolve(v);};};q.onerror=()=>{d.close();reject(q.error);};};});}
 async function refresh(){
- if(busy)return;busy=true;$('#refresh').disabled=true;$('#refresh').textContent='Проверяем источник…';
- if(location.protocol==='file:'){busy=false;$('#refresh').disabled=false;$('#refresh').textContent='↻ Обновить цены';$('#notice').textContent='Это автономная копия. Для обновления откройте онлайн-каталог или Google-таблицу из раздела «Обновления».';return;}
+ if(busy)return;busy=true;refreshState('loading');let finalState='idle';
+ if(location.protocol==='file:'){busy=false;refreshState('idle');$('#notice').textContent='Это автономная копия. Для обновления откройте онлайн-каталог или Google-таблицу из раздела «Обновления».';return;}
  try{
   const direct=document.documentElement.dataset.catalogMode==='direct';
   const endpoint=direct?'https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/export?format=csv':'/api/catalog';
@@ -106,10 +573,10 @@ async function refresh(){
   const count=changes.changed.length+changes.added.length+changes.removed.length;
   $('#updateSummary').textContent='Проверено '+date+'. '+(count?'Изменились цены: '+changes.changed.length+'. Новые названия: '+changes.added.length+'. Исчезли из прайса: '+changes.removed.length+'.':'Цены и состав прайса не изменились относительно сохранённой версии.');
   $('#changeList').innerHTML=[...changes.changed.slice(0,30).map(([n,a,b])=>'<li>'+escapeHTML(n)+'<br>'+a.map(money).join(' / ')+' → <b>'+b.map(money).join(' / ')+'</b></li>'),...changes.added.slice(0,10).map(([n,p])=>'<li>Добавлено: '+escapeHTML(n)+' · '+p.map(money).join(' / ')+'</li>'),...changes.removed.slice(0,10).map(([n])=>'<li>Исчезло из прайса: '+escapeHTML(n)+'</li>')].join('');
-  if(count)toast('Прайс обновлён. Изменения — в разделе «Обновления».');
+  finalState='success';if(count)toast('Прайс обновлён. Изменения — в разделе «Обновления».');
   try{await db('put',data);}catch{toast('Цены обновлены. Браузер не смог сохранить копию для работы без сети.');}
- }catch(e){$('#notice').textContent='Не удалось проверить источник. Показана сохранённая копия; её дата указана сверху. Повторите обновление позже.';$('#updateSummary').textContent='Последняя попытка обновления не удалась. Сохранённые цены не изменены.';}
- finally{busy=false;$('#refresh').disabled=false;$('#refresh').textContent='↻ Обновить цены';}
+ }catch(e){finalState='error';$('#notice').textContent='Не удалось проверить источник. Показана сохранённая копия; её дата указана сверху. Повторите обновление позже.';$('#updateSummary').textContent='Последняя попытка обновления не удалась. Сохранённые цены не изменены.';}
+ finally{busy=false;refreshState(finalState);}
 }
 $('#search').addEventListener('input',apply);['format','concentration','volume','sort','minPrice','maxPrice'].forEach(id=>$('#'+id).addEventListener('input',apply));
 $('#clearSearch').onclick=()=>{$('#search').value='';apply();$('#search').focus();};$('#reset').onclick=()=>{['search','format','concentration','volume','minPrice','maxPrice'].forEach(id=>$('#'+id).value='');$('#sort').value='source';apply();};
@@ -124,4 +591,276 @@ $('#promoSource').textContent='Открыть пост со скидками ↗
 prepare(sourceRows);apply();
 (async()=>{try{const cached=await db('get');if(cached?.rows?.length&&!hasRemote){sourceRows=cached.rows;prepare(sourceRows);apply();$('#lastChecked').textContent='Сохранённая копия · '+new Date(cached.checkedAt).toLocaleString('ru-RU');}}catch{}await refresh();})();
 
-})();</script></body></html>
+})();</script>
+<script type="module">/*
+  taste-skill motion.js - the moving half of the micro-interaction layer (motion.css is the rest).
+  Load it once, after system.js (motion.css needs no attribute; <html data-motion="off"> turns the layer off, JS too):
+    <script type="module" src="assets/motion/motion.js"><\/script>
+  It starts by itself. references/motion.md says what moves and how fast.
+
+  - nav: .m-menu-open from the moment a menu starts to show (150ms of intent), so the next word swaps the panel at once
+    instead of waiting 150ms again; it stays while the pointer is on the word or its panel.
+  - tabs: every .tabs[role=tablist] gets one indicator that slides to the selected tab (system.js
+    still selects; this follows aria-selected).
+  - numbers: [data-m-count] on a stat ticks from 0 to its own text once, when 60% of it is on
+    screen (1.2 s, ease-out); prefix, suffix, decimals and thousands separators are kept. The
+    number's width is measured once the web fonts are in and again when it is first seen (a stat
+    in a hidden tab), so nothing beside it moves; a stat the observer never reports shows its own
+    text after 6 s on screen. A headless screenshot (HeadlessChrome) sees the final number unless
+    <html data-motion="live">.
+  - loops: [data-m-loop] marks a panel (or any box) whose CSS keyframe loops the page wrote itself;
+    they pause off screen, restart when the pointer enters the card around them, and get the
+    system's pause button (one per panel, shared with ui.js). ui.js restarts its own fragments.
+  - switches: a click on .m-switch flips aria-checked unless a handler before it called
+    preventDefault().
+  Under prefers-reduced-motion: no indicator travel, no tick, no loops, no restart.
+*/
+const html = document.documentElement;
+const reducedQ = matchMedia('(prefers-reduced-motion: reduce)');
+const reduced = () => reducedQ.matches;
+const shot = () => /HeadlessChrome/.test(navigator.userAgent) && html.dataset.motion !== 'live';
+const jump = (el, on) => { el.classList.toggle('is-jump', on); };
+
+/* ---------------------------------------------------------------- nav */
+function nav() {
+  const bar = document.querySelector('.nav');
+  const links = bar?.querySelector('.nav__links');
+  if (!links || bar.dataset.mNav) return;
+  bar.dataset.mNav = '1';   // no pill under the words (ST-08, ST-11): system.css draws their underline
+
+  // one menu open: the next word swaps the panel at once (figma.com); leaving the bar closes softly
+  let t = 0;
+  bar.querySelectorAll('.nav__item').forEach(item => {
+    const has = !!item.querySelector('.nav__menu');
+    item.addEventListener('pointerenter', () => {
+      clearTimeout(t);
+      // 150ms: the panel has started to show (motion.css lets it finish its own fade)
+      if (has) t = setTimeout(() => bar.classList.add('m-menu-open'), 150);
+      else bar.classList.remove('m-menu-open');
+    });
+  });
+  bar.addEventListener('pointerleave', () => { clearTimeout(t); bar.classList.remove('m-menu-open'); });
+}
+
+/* ---------------------------------------------------------------- tabs */
+function tabs() {
+  document.querySelectorAll('.tabs[role="tablist"], [role="tablist"].m-tabs').forEach(list => {
+    if (!list.querySelector('[role="tab"]') || list.querySelector(':scope > .m-tab-ind')) return;
+    const ind = document.createElement('span');
+    ind.className = 'm-tab-ind';
+    ind.setAttribute('aria-hidden', 'true');
+    list.prepend(ind);
+    list.classList.add('m-has-ind');
+    let instant = true;
+    const place = () => {
+      const sel = list.querySelector('[role="tab"][aria-selected="true"]');
+      if (!sel) { ind.style.opacity = '0'; return; }
+      ind.style.opacity = '';
+      const now = instant || reduced();
+      jump(ind, now);
+      ind.style.setProperty('--x', `${sel.offsetLeft}px`);
+      ind.style.setProperty('--y', `${sel.offsetTop}px`);
+      ind.style.setProperty('--w', `${sel.offsetWidth}px`);
+      ind.style.setProperty('--h', `${sel.offsetHeight}px`);
+      if (now) { ind.getBoundingClientRect(); jump(ind, false); }
+      instant = false;
+    };
+    place();
+    new MutationObserver(place).observe(list, { subtree: true, attributes: true, attributeFilter: ['aria-selected'] });
+    new ResizeObserver(() => { instant = true; place(); }).observe(list);
+    document.fonts?.ready.then(() => { instant = true; place(); });
+  });
+}
+
+/* ---------------------------------------------------------------- numbers */
+// the first number in the element's text: "8,402", "4.2", "64%", "EUR 1.200", "12k"
+// separators: . , and the no-break spaces (U+00A0, U+202F); a plain space ends the number ("12 4 h" is 12)
+const NUM = /\d+(?:[.,\u00A0\u202F]\d+)*/;
+function parse(text) {
+  const m = text.match(NUM);
+  if (!m) return null;
+  const raw = m[0];
+  const seps = raw.match(/[^\d]/g) || [];
+  let dec = '', group = '', decimals = 0;
+  const lastSep = raw.search(/[^\d](?=\d+$)/);
+  if (lastSep >= 0) {
+    const tail = raw.length - lastSep - 1;
+    // a last separator before exactly three digits groups thousands; otherwise it is the decimal point
+    if (tail === 3 && !(seps.length === 1 && raw[lastSep] === '.' && /^0/.test(raw))) group = raw[lastSep];
+    else { dec = raw[lastSep]; decimals = tail; group = seps.length > 1 ? seps[0] : ''; }
+  }
+  const intPart = dec ? raw.slice(0, lastSep) : raw;
+  const value = parseFloat(intPart.replace(/[^\d]/g, '') + (dec ? '.' + raw.slice(lastSep + 1) : ''));
+  return { index: m.index, raw, value, dec, group, decimals };
+}
+function format(v, p) {
+  let [i, d] = v.toFixed(p.decimals).split('.');
+  if (p.group) i = i.replace(/\B(?=(\d{3})+(?!\d))/g, p.group);
+  return d ? i + p.dec + d : i;
+}
+// the web fonts, or 3 s at most: a number measured in the fallback font comes out narrower
+const fontsIn = () => Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(r => setTimeout(r, 3000))]);
+function counts() {
+  const els = [...document.querySelectorAll('[data-m-count]')].filter(el => !el.__mCount);
+  if (!els.length || reduced() || shot()) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.__mCount?.hit(); }), { threshold: 0.6 });
+  const ro = new ResizeObserver(es => es.forEach(e => e.target.__mCount?.arm()));
+  const items = [];
+  els.forEach(el => {
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let node, p;
+    while ((node = walk.nextNode()) && !(p = parse(node.data))) { /* next */ }
+    if (!node || !p) return;
+    // the number gets its own span, as wide as the final number and right-aligned, so nothing beside it
+    // moves. Until it is measured it shows its own text, never a 0
+    const after = node.splitText(p.index);
+    after.splitText(p.raw.length);
+    const span = document.createElement('span');
+    span.className = 'm-count__n';
+    span.style.display = 'inline-block';
+    span.style.textAlign = 'right';
+    span.textContent = p.raw;
+    after.replaceWith(span);
+    const ms = +el.dataset.mCount || 1200;
+    let state = 'wait', timer = 0;          // wait (own text) -> armed (0, width held) -> run -> done
+    const stop = () => { clearTimeout(timer); io.unobserve(el); ro.unobserve(el); };
+    const onScreen = () => {
+      const r = span.getBoundingClientRect();
+      return r.width > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth && document.visibilityState === 'visible';
+    };
+    // the safety net: a stat on screen for 6 s that the observer never reported shows its own text
+    const watch = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (state !== 'armed') return;
+        if (onScreen()) { state = 'done'; stop(); span.textContent = p.raw; } else watch();
+      }, 6000);
+    };
+    const ctl = {
+      /** measure the final number in the page's font and hold its width; false while it has none (hidden) */
+      arm() {
+        if (state === 'run' || state === 'done') return false;
+        span.textContent = p.raw;
+        span.style.minWidth = '';
+        const w = span.getBoundingClientRect().width;
+        if (!w) { state = 'wait'; clearTimeout(timer); return false; }
+        span.style.minWidth = `${w}px`;
+        span.textContent = format(0, p);
+        if (state !== 'armed') { state = 'armed'; watch(); }
+        return true;
+      },
+      /** print: stop waiting and show the written number */
+      show() { if (state === 'done') return; state = 'done'; stop(); span.textContent = p.raw; },
+      /** first seen: measure again (a font or a tab that changed since), then tick once */
+      hit() {
+        if (state === 'run' || state === 'done' || !ctl.arm()) return;
+        state = 'run';
+        stop();
+        const t0 = performance.now();
+        const step = now => {
+          const k = Math.min(1, (now - t0) / ms);
+          span.textContent = k < 1 ? format(p.value * (1 - Math.pow(1 - k, 4)), p) : p.raw;
+          if (k < 1) requestAnimationFrame(step); else state = 'done';
+        };
+        requestAnimationFrame(step);
+      },
+    };
+    el.__mCount = ctl;
+    items.push(el);
+  });
+  // measured only once the fonts are in; the resize observer measures again when a hidden stat shows
+  fontsIn().then(() => items.forEach(el => { el.__mCount.arm(); ro.observe(el); io.observe(el); }));
+  // a printed page never scrolls the stats into view: each prints its own number
+  addEventListener('beforeprint', () => items.forEach(el => el.__mCount.show()));
+}
+
+/* ---------------------------------------------------------------- loops inside cards */
+const ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4.25" y="3.25" width="2.75" height="9.5" rx="0.9"/><rect x="9" y="3.25" width="2.75" height="9.5" rx="0.9"/></svg>';
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.25 3.7v8.6c0 .62.68 1 1.2.66l6.5-4.3c.47-.31.47-1 0-1.32l-6.5-4.3c-.52-.34-1.2.04-1.2.66Z"/></svg>';
+const boxOf = el => el.closest('[data-ui-pause-host], .panel__screen, .panel, .frame') || el;
+const hostOf = el => el.closest('.card, .tile, .menu-card, a') || boxOf(el);
+
+function restart(loop) {
+  if (reduced() || loop.classList.contains('is-m-paused')) return;
+  // the page's keyframe loops only: a hover transition in the panel (the pause button's) is no cycle.
+  // ui.js fragments in the card restart by themselves
+  const anims = loop.getAnimations({ subtree: true }).filter(a => typeof CSSAnimation === 'function' && a instanceof CSSAnimation);
+  if (!anims.length) return;
+  const dur = a => Number(a.effect?.getComputedTiming().duration) || 0;
+  const main = anims.reduce((m, a) => (dur(a) > dur(m) ? a : m));
+  const d = dur(main), t = Number(main.currentTime) || 0;
+  // restart only when the cycle is past its first quarter, so a quick in-and-out never stutters
+  if (!d || (t % d) / d > 0.25) anims.forEach(a => { a.currentTime = 0; });
+}
+function setPaused(box, paused) {
+  box.querySelectorAll('[data-m-loop]').forEach(l => l.classList.toggle('is-m-paused', paused));
+  if (box.matches('[data-m-loop]')) box.classList.toggle('is-m-paused', paused);
+}
+function pauseButton(loop) {
+  const box = boxOf(loop);
+  if (box.querySelector(':scope > .loop-pause')) return;   // ui.js or the page put one there: it is shared
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'loop-pause m-own';
+  const show = paused => {
+    btn.innerHTML = paused ? ICON_PLAY : ICON_PAUSE;
+    btn.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} animation`);
+    btn.title = btn.getAttribute('aria-label');
+    btn.classList.toggle('is-paused', paused);
+  };
+  show(false);
+  if (getComputedStyle(box).position === 'static') box.style.position = 'relative';
+  box.append(btn);
+  btn.__show = show;
+}
+function loops() {
+  const els = [...document.querySelectorAll('[data-m-loop]')].filter(el => !el.__mLoop);
+  if (!els.length) return;
+  if (reduced() || matchMedia('(max-width: 639px)').matches) return;   // motion.css holds them on their finished picture
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-m-off', !e.isIntersecting)), { rootMargin: '48px' });
+  els.forEach(el => {
+    el.__mLoop = true;
+    io.observe(el);
+    pauseButton(el);
+    hostOf(el).addEventListener('pointerenter', e => { if (e.pointerType !== 'touch') restart(el); });   // a mouse or pen, never a tap
+    hostOf(el).addEventListener('focusin', e => { if (!e.target.closest('.loop-pause')) restart(el); });
+  });
+}
+// one listener for every pause button: its own (m-own) toggles; a ui.js one is mirrored after ui.js ran
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.loop-pause');
+  if (!btn) return;
+  const box = btn.parentElement;
+  if (btn.classList.contains('m-own')) {
+    const paused = !btn.classList.contains('is-paused');
+    btn.__show(paused);
+    setPaused(box, paused);
+    box.querySelectorAll('[data-ui]').forEach(r => { try { paused ? r.__ui?.pause() : r.__ui?.resume(); } catch { /* none */ } });
+  } else setPaused(box, btn.classList.contains('is-paused'));
+});
+
+/* ---------------------------------------------------------------- switches */
+document.addEventListener('click', e => {
+  const sw = e.target.closest('.m-switch');
+  if (!sw || e.defaultPrevented) return;
+  sw.setAttribute('aria-checked', String(sw.getAttribute('aria-checked') !== 'true'));
+});
+
+/* ---------------------------------------------------------------- start */
+export function init() {
+  if (html.dataset.motion === 'off') return;
+  if (!html.hasAttribute('data-motion')) html.setAttribute('data-motion', '');
+  try { nav(); } catch (e) { console.warn('motion.js: nav', e); }
+  try { tabs(); } catch (e) { console.warn('motion.js: tabs', e); }
+  try { counts(); } catch (e) { console.warn('motion.js: counts', e); }
+  try { loops(); } catch (e) { console.warn('motion.js: loops', e); }
+}
+/** call again after the page adds markup (a tab list, a stat, a loop) */
+export const refresh = init;
+export default { init, refresh };
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+else init();
+</script>
+</body>
+</html>

@@ -5,3 +5,4 @@ worker/index.js
 .env
 .env.*
 *.inspect.ndjson
+.taste-skill/
