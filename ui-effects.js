@@ -18,24 +18,13 @@ function enhanceActions(){
  });
 }
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
-let effectsEnabled=true;
-try{effectsEnabled=localStorage.getItem('eaude-effects')!=='off';}catch{}
-function motionAllowed(){return effectsEnabled&&!reducedMotion.matches;}
+function motionAllowed(){return !reducedMotion.matches;}
 function syncEffects(){
- const enabled=motionAllowed();document.documentElement.dataset.effects=enabled?'on':'off';
- const button=document.querySelector('#motionToggle');if(!button)return;
+ const enabled=motionAllowed();
+ document.documentElement.dataset.effects=enabled?'on':'off';
  document.documentElement.dataset.motion=enabled?'':'off';
- button.disabled=reducedMotion.matches;
- button.setAttribute('aria-pressed',String(enabled));
- const label=reducedMotion.matches?'Анимации отключены в настройках устройства':enabled?'Отключить анимацию':'Включить анимацию';
- button.setAttribute('aria-label',label);button.title=label;
- button.querySelector('use').setAttribute('href',enabled?'#i-pause':'#i-play');
 }
 syncEffects();
-document.querySelector('#motionToggle').addEventListener('click',()=>{
- effectsEnabled=!motionAllowed();try{localStorage.setItem('eaude-effects',effectsEnabled?'on':'off');}catch{}
- syncEffects();
-});
 reducedMotion.addEventListener('change',syncEffects);
 let transitionRun=0,viewAnimations=[];
 async function transitionView(section,change){

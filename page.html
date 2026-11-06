@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0b0c">
+  <meta name="theme-color" content="#04202e">
   <meta name="page-type" content="software"><meta name="site-kind" content="software">
   <title>Eaudestore — каталог парфюмерии</title>
   <meta name="description" content="Каталог Eaudestore: поиск ароматов, сравнение цен и объёмов, избранное и актуальный прайс продавца.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230B0B0C'/%3E%3Ctext x='12' y='34' font-family='Arial' font-size='34' fill='%23C6F432'%3Ee%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%2304202E'/%3E%3Ctext x='12' y='34' font-family='Arial' font-size='34' fill='%234FB3DA'%3Ee%3C/text%3E%3C/svg%3E">
   <style>/*__STYLES__*/</style>
 </head>
 <body>
-<!-- Existing catalog; midnight/lime palette; Manrope; shared hover buttons. -->
+<!-- Existing catalog; seven-tone sky palette; Manrope; shared hover buttons. -->
 <a class="skip-link" href="#search">Перейти к поиску</a>
 <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
@@ -27,12 +27,11 @@
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M8 5h11v11M19 5 5 19"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"/></symbol>
-  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21.4 3.5 18 20.1c-.2 1.1-.9 1.4-1.8.9l-5.1-3.8-2.5 2.4c-.3.3-.5.5-1 .5l.4-5.2L17.5 6c.4-.4-.1-.6-.6-.3L5.2 13.1l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20 2.4c.9-.3 1.7.2 1.4 1.1Z"/></symbol>
 </defs></svg>
 <div class="shell">
   <aside class="sidebar">
-    <div class="brand-row"><a class="brand" href="./" aria-label="Eaudestore — главная">eau<span>de</span>store<span class="brand-dot">.</span></a><button id="motionToggle" class="motion-toggle" aria-label="Отключить анимацию" title="Отключить анимацию" aria-pressed="true"><svg aria-hidden="true"><use href="#i-pause"/></svg></button></div>
+    <div class="brand-row"><a class="brand" href="./" aria-label="Eaudestore — главная">eau<span>de</span>store<span class="brand-dot">.</span></a></div>
     <p class="brand-caption">Ваша коллекция ароматов</p><p class="nav-label">Библиотека</p>
     <nav class="nav" aria-label="Разделы">
       <button data-view="catalog" class="active" aria-current="page"><svg><use href="#i-grid"/></svg><span>Каталог</span></button>
@@ -40,7 +39,7 @@
       <button data-view="promotions"><svg><use href="#i-tag"/></svg><span>Скидки<span class="desktop-word"> из канала</span></span></button>
       <button data-view="updates"><svg><use href="#i-refresh"/></svg><span>Обновления</span></button>
     </nav>
-    <div class="sidefoot"><div class="source-caption"><span class="source-dot"></span>Прайс Eaudestore</div><p>Цены из таблицы продавца.<br>Наличие уточняйте при заказе.</p><a class="m-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener">Открыть канал</a><a class="m-link" href="https://t.me/hhellbound" target="_blank" rel="noopener">Написать продавцу</a></div>
+    <div class="sidefoot"><div class="source-caption"><span class="source-dot"></span>Прайс Eaudestore</div><p>Цены из таблицы продавца.<br>Наличие уточняйте при заказе.</p><a class="telegram-link" href="https://t.me/eaudestore/6" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-telegram"/></svg><span>Открыть канал</span></a><a class="telegram-link" href="https://t.me/hhellbound" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-telegram"/></svg><span>Написать продавцу</span></a></div>
   </aside>
   <main class="main">
     <header class="topline"><div class="sync-status"><span class="status-dot" aria-hidden="true"></span><span id="lastChecked">Сохранённый прайс · 5 ноября 2026</span></div><button id="refresh" class="btn btn--primary refresh-button"><svg aria-hidden="true"><use href="#i-refresh"/></svg><span>Обновить цены</span></button></header>
