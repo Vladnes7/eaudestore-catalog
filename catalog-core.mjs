@@ -19,6 +19,7 @@ export function cleanRows(input){
     if(r.every(v=>!String(v??'').trim())){empty++;continue;}
     const name=String(r[0]??'').trim(),raw=String(r[1]??'').replace(/[\s₽]/g,'').replace(',','.');
     const price=raw!==''?Number(raw):NaN;
+    if(!name&&(!Number.isFinite(price)||price<=0)){empty++;continue;}
     if(!name||!Number.isFinite(price)||price<=0)throw Error('Не удалось прочитать цену: '+name.slice(0,80));
     const key=JSON.stringify([name,price]);if(seen.has(key)){duplicates++;continue;}seen.add(key);rows.push([name,price]);
   }

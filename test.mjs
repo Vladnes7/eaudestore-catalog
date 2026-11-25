@@ -6,6 +6,7 @@ assert.throws(()=>parseCSV('"open'));
 assert.deepEqual(cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА'],['X','1 200 ₽'],['',''],['X','1200'],['X','1500']]),{rows:[['X',1200],['X',1500]],empty:1,duplicates:1});
 assert.throws(()=>cleanRows([['wrong','schema'],['x','100']]));
 assert.throws(()=>cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА'],['X','']]));
+assert.deepEqual(cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА'],['X',100],['','0'],['','']]),{rows:[['X',100]],empty:2,duplicates:0});
 assert.throws(()=>cleanRows([['НАИМЕНОВАНИЕ','ЦЕНА']]));
 assert.equal(normalize('Насоматто'),normalize('Nasomatto'));
 assert.ok(normalize('État libre d’Orange').includes('etat libre d orange'));
